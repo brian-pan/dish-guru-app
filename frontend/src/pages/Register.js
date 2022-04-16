@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
+import Spinner from "../components/Spinner";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -31,7 +32,9 @@ function Register() {
     //redirect when logged in
     if (isSuccess || user) {
       navigate("/");
-      toast.success("Register successfully!");
+      toast.success(`Welcome to support desk, ${user.name}!`, {
+        autoClose: 1500,
+      });
     }
 
     dispatch(reset);
@@ -59,6 +62,10 @@ function Register() {
       dispatch(register(userData));
     }
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
