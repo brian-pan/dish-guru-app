@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome, {user ? user.name : null}</h1>
+        <h1>Welcome{user ? "," + user.name : " to SpicesGuru"}</h1>
         <p>Please choose from an option below</p>
       </section>
 
