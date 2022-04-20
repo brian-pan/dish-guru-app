@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 //Routes
-app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/users/", require("./routes/userRoutes"));
 
 //error handler
 app.use(errorHandler);
@@ -26,16 +26,3 @@ app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}:`);
 });
-
-// mongoose.connect('mongodb://localhost:27017/yelp-camp', {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false
-// });
-
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", () => {
-//     console.log("Database connected");
-// });

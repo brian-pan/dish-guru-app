@@ -8,8 +8,8 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>title{user ? ", " + user.name : null}?</h1>
-        <p>description goes here</p>
+        <h1>Welcome, {user ? user.name : null}</h1>
+        <p>Please choose from an option below</p>
       </section>
 
       <Link to="/new-ticket" className="btn btn-reverse btn-block">

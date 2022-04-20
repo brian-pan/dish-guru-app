@@ -32,7 +32,7 @@ function Register() {
     //redirect when logged in
     if (isSuccess || user) {
       navigate("/");
-      toast.success(`Welcome to support desk, ${user.name}!`, {
+      toast.success(`Welcome to SpicesMaster, ${user.name}!`, {
         autoClose: 1500,
       });
     }
