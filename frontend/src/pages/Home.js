@@ -8,16 +8,16 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome{user ? "," + user.name : " to SpicesGuru"}</h1>
+        <h1>Welcome back{user ? ", " + user.name : " to SpicesGuru"}</h1>
         <p>Please choose from an option below</p>
       </section>
 
       <Link to="/new-ticket" className="btn btn-reverse btn-block">
-        <FaQuestionCircle /> example button 1
+        <FaQuestionCircle /> Explore dishes
       </Link>
 
       <Link to="/tickets" className="btn btn-block">
-        <FaTicketAlt /> example button 2
+        <FaTicketAlt /> View my dishes
       </Link>
     </>
   );
