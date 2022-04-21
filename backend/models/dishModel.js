@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const dishSchema = mongoose.Schema(
+const dishSchema = Schema(
   {
     author: {
       type: Schema.Types.ObjectId,

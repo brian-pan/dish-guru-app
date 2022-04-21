@@ -19,6 +19,12 @@ function Home() {
       <Link to="/tickets" className="btn btn-block">
         <FaTicketAlt /> View my dishes
       </Link>
+      <Link to="/tickets" className="btn btn-block">
+        <FaTicketAlt /> Create a recipe
+      </Link>
+      <Link to="/tickets" className="btn btn-block">
+        <FaQuestionCircle /> Get random dish
+      </Link>
     </>
   );
 }
