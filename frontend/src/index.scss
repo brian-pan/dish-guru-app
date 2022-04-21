@@ -182,6 +182,24 @@ h3 {
   }
 }
 
+.dish-page {
+  padding: 15px;
+  .dish-header {
+    h2 {
+      text-align: center;
+    }
+
+    div {
+      display: flex;
+      justify-content: flex-end;
+
+      h3 {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
 .loadingSpinnerContainer {
   position: fixed;
   top: 0;

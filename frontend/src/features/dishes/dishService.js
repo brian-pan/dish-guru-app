@@ -22,13 +22,26 @@ const getMyDishes = async (token) => {
     },
   };
   const response = await axios.get(API_URL_MY, config);
-  console.log("slice getdishes", response.data);
+
+  return response.data;
+};
+
+//get private dish (show page)
+const getMyDish = async (dishId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL_MY + dishId, config);
+
   return response.data;
 };
 
 const dishService = {
   createDish,
   getMyDishes,
+  getMyDish,
 };
 
 export default dishService;

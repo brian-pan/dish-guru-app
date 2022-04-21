@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dishes from "./pages/Dishes";
 import MyDishes from "./pages/MyDishes";
+import MyDish from "./pages/MyDish";
 import NewDish from "./pages/NewDish";
 import RandomDish from "./pages/RandomDish";
 
@@ -27,6 +28,9 @@ function App() {
             <Route path="/dishes" element={<Dishes />} />
             <Route path="/my-dishes" element={<PrivateRoute />}>
               <Route path="/my-dishes" element={<MyDishes />} />
+            </Route>
+            <Route path="/my-dishes/:dishId" element={<PrivateRoute />}>
+              <Route path="/my-dishes/:dishId" element={<MyDish />} />
             </Route>
             <Route path="/new-dish" element={<PrivateRoute />}>
               <Route path="/new-dish" element={<NewDish />} />
