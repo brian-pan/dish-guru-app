@@ -73,6 +73,12 @@ h3 {
   }
 }
 
+.page-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .heading {
   font-size: 1.2em;
   font-weight: 700;
@@ -125,6 +131,11 @@ h3 {
   border: none;
 }
 
+.btn-sm {
+  padding: 5px 15px;
+  font-size: 13px;
+}
+
 .btn-back {
   width: 150px;
   margin-bottom: 20px;
@@ -132,6 +143,43 @@ h3 {
 
 .home-links {
   padding: 0 20px;
+}
+
+.dish-body {
+  padding: 5px;
+}
+
+.dish-card {
+  // border: 1px solid red;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  background-color: #e9e6e6c0;
+  margin-bottom: 20px;
+  padding: 20px;
+
+  .dish-card-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .dish-card-isPublic {
+    display: flex;
+    justify-content: flex-end;
+
+    p {
+      border: 1px solid black;
+      border-radius: 0.5em;
+      // background-color: #000;
+      // color: #fff;
+    }
+  }
+
+  .dish-card-description {
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px;
+  }
 }
 
 .loadingSpinnerContainer {
