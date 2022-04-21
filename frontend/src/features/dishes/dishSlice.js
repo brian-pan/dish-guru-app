@@ -1,0 +1,59 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import dishService from "./dishService";
+
+const initialState = {
+  dishes: [],
+  dish: {},
+  isError: false,
+  isSuccess: false,
+  isLoading: false,
+  message: "",
+};
+
+//FUNCTIONS
+//create new dish
+export const createDish = createAsyncThunk(
+  "dishes/create",
+  async (dishData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await dishService.createDish(dishData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//
+export const dishSlice = createSlice({
+  name: "dish",
+  initialState,
+  reducers: {
+    reset: (state) => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createDish.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createDish.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(createDish.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      });
+  },
+});
+
+export const { reset } = dishSlice.actions;
+export default dishSlice.reducer;

@@ -12,20 +12,22 @@ function Home() {
         <p>Please choose an option from below</p>
       </section>
 
-      <Link to="/dishes" className="btn btn-reverse btn-block">
-        <FaGlobe />
-        Explore Dishes
-      </Link>
+      <div className="home-links">
+        <Link to="/dishes" className="btn btn-block">
+          <FaGlobe />
+          Explore Dishes
+        </Link>
 
-      <Link to="/my-dishes" className="btn btn-block">
-        <FaList /> View my dishes
-      </Link>
-      <Link to="/new" className="btn btn-block">
-        <FaCarrot /> Add a dish
-      </Link>
-      <Link to="/random" className="btn btn-block">
-        <FaQuestionCircle /> Get random dish
-      </Link>
+        <Link to="/my-dishes" className="btn btn-block">
+          <FaList /> View my dishes
+        </Link>
+        <Link to="/new-dish" className="btn btn-block">
+          <FaCarrot /> Add a dish
+        </Link>
+        <Link to="/random" className="btn btn-block">
+          <FaQuestionCircle /> Get random dish
+        </Link>
+      </div>
     </>
   );
 }
