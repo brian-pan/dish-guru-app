@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaQuestionCircle, FaTicketAlt } from "react-icons/fa";
+import { FaQuestionCircle, FaGlobe, FaCarrot, FaList } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 function Home() {
@@ -8,21 +8,22 @@ function Home() {
   return (
     <>
       <section className="heading">
-        <h1>Welcome back{user ? ", " + user.name : " to SpicesGuru"}</h1>
-        <p>Please choose from an option below</p>
+        <h1>Welcome {user ? "back, " + user.name : " to SpicesGuru"}</h1>
+        <p>Please choose an option from below</p>
       </section>
 
-      <Link to="/new-ticket" className="btn btn-reverse btn-block">
-        <FaQuestionCircle /> Explore dishes
+      <Link to="/dishes" className="btn btn-reverse btn-block">
+        <FaGlobe />
+        Explore Dishes
       </Link>
 
-      <Link to="/tickets" className="btn btn-block">
-        <FaTicketAlt /> View my dishes
+      <Link to="/my-dishes" className="btn btn-block">
+        <FaList /> View my dishes
       </Link>
-      <Link to="/tickets" className="btn btn-block">
-        <FaTicketAlt /> Create a recipe
+      <Link to="/new" className="btn btn-block">
+        <FaCarrot /> Add a dish
       </Link>
-      <Link to="/tickets" className="btn btn-block">
+      <Link to="/random" className="btn btn-block">
         <FaQuestionCircle /> Get random dish
       </Link>
     </>
