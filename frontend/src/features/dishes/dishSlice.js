@@ -77,6 +77,11 @@ export const dishSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    // resetLoadingState: (state) => ({
+    //   isLoading: false,
+    //   isSuccess: false,
+    //   isError: false,
+    // }),
   },
   extraReducers: (builder) => {
     builder

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getMyDish } from "../features/dishes/dishSlice";
+import { getMyDish, reset } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 
 function MyDish() {
   const { dish, isSuccess, isError, isLoading, message } = useSelector(
@@ -31,7 +32,8 @@ function MyDish() {
   return (
     <div className="dish-page">
       <header className="dish-header">
-        <button className="btn">Back</button>
+        <BackButton url="/my-dishes" />
+
         <h2>{dish.name}</h2>
         <div>
           <h3 className={`dish-diet dish-diet-${dish.diet}`}>{dish.diet}</h3>

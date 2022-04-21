@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createDish, reset } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 
 function NewDish() {
   //global state
@@ -32,6 +33,7 @@ function NewDish() {
       toast.error(message);
     }
     if (isSuccess) {
+      console.log("newdish");
       dispatch(reset());
       navigate("/my-dishes");
       toast.success("Dish Created!", {
@@ -61,6 +63,7 @@ function NewDish() {
   return (
     <>
       <section className="heading">
+        <BackButton url="/" />
         <h1>Add new dish</h1>
         <p>Please fill out the form below</p>
       </section>

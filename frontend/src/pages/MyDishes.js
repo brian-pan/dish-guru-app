@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMyDishes, reset } from "../features/dishes/dishSlice";
 import Spinner from "../components/Spinner";
+import BackButton from "../components/BackButton";
 import DishItem from "../components/DishItem";
+// import AddButton from "../components/AddButton";
 
 function MyDishes() {
   const { dishes, isLoading, isSuccess } = useSelector((state) => state.dishes);
-  console.log(dishes);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +28,10 @@ function MyDishes() {
 
   return (
     <>
+      <div className="dish-buttons">
+        <BackButton url="/" />
+        {/* <AddButton url="/new-dish" /> */}
+      </div>
       <h1 className="page-title">My Dishes</h1>
       <div className="dish-cards">
         <div className="dish-heading"></div>

@@ -93,7 +93,7 @@ h3 {
 .btn {
   padding: 10px 20px;
   border: 1px solid #000;
-  border-radius: 5px;
+  border-radius: 0.5em;
   background: #fff;
   color: #000;
   font-size: 16px;
@@ -106,7 +106,7 @@ h3 {
   justify-content: center;
 
   svg {
-    margin-right: 8px;
+    margin-right: 5px;
   }
 
   &:hover {
@@ -139,6 +139,7 @@ h3 {
 .btn-back {
   width: 150px;
   margin-bottom: 20px;
+  padding: 10px;
 }
 
 .home-links {
