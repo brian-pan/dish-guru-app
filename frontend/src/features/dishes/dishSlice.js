@@ -31,13 +31,33 @@ export const createDish = createAsyncThunk(
   }
 );
 
-//get all dish (private)
+//get all dishes (PRIVATE)
 export const getMyDishes = createAsyncThunk(
   "dishes/getAllPrivate",
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await dishService.getMyDishes(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//get all dishes (PUBLIC)
+export const getPublicDishes = createAsyncThunk(
+  "dishes/getAllPublic",
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await dishService.getPublicDishes(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -119,6 +139,19 @@ export const dishSlice = createSlice({
         state.dish = action.payload; //important step
       })
       .addCase(getMyDish.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getPublicDishes.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPublicDishes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.dishes = action.payload; //important
+      })
+      .addCase(getPublicDishes.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

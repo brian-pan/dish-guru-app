@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getMyDishes, reset } from "../features/dishes/dishSlice";
+import { getPublicDishes, reset } from "../features/dishes/dishSlice";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
-import MyDishItem from "../components/MyDishItem";
-// import AddButton from "../components/AddButton";
+import PublicDishItem from "../components/PublicDishItem";
 
-function MyDishes() {
+function PublicDishes() {
   const { dishes, isLoading, isSuccess } = useSelector((state) => state.dishes);
   const dispatch = useDispatch();
 
@@ -19,8 +18,11 @@ function MyDishes() {
   }, [dispatch, isSuccess]);
 
   useEffect(() => {
-    dispatch(getMyDishes());
+    dispatch(getPublicDishes());
+    console.log(dishes);
   }, [dispatch]);
+
+  console.log(dishes);
 
   if (isLoading) {
     return <Spinner />;
@@ -30,14 +32,12 @@ function MyDishes() {
     <>
       <div className="dish-buttons">
         <BackButton url="/" />
-        {/* <AddButton url="/new-dish" /> */}
       </div>
-      <h1 className="page-title">My Dishes</h1>
+      <h1 className="page-title">Explore Dishes</h1>
       <div className="dish-cards">
-        {dishes.length ? null : <h3> You don't have any recipe yet...</h3>}
         <div className="dish-body">
           {dishes.map((dish) => (
-            <MyDishItem key={dish._id} dish={dish} />
+            <PublicDishItem key={dish._id} dish={dish} />
           ))}
         </div>
       </div>
@@ -45,4 +45,4 @@ function MyDishes() {
   );
 }
 
-export default MyDishes;
+export default PublicDishes;

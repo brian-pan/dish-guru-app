@@ -9,7 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dishes from "./pages/Dishes";
+import PublicDishes from "./pages/PublicDishes";
 import MyDishes from "./pages/MyDishes";
 import MyDish from "./pages/MyDish";
 import NewDish from "./pages/NewDish";
@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/dishes" element={<Dishes />} />
+            <Route path="/dishes" element={<PublicDishes />} />
             <Route path="/my-dishes" element={<PrivateRoute />}>
               <Route path="/my-dishes" element={<MyDishes />} />
             </Route>

@@ -4,7 +4,7 @@ import { FaLeaf } from "react-icons/fa";
 // import { GiMeat } from "react-icons/gi";
 // import { Chip } from "@mui/material";
 
-function DishItem({ dish }) {
+function MyDishItem({ dish }) {
   return (
     <div className="dish-card">
       <div className="dish-card-title">
@@ -30,4 +30,4 @@ function DishItem({ dish }) {
     </div>
   );
 }
-export default DishItem;
+export default MyDishItem;

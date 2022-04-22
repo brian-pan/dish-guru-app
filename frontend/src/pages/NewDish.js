@@ -33,7 +33,6 @@ function NewDish() {
       toast.error(message);
     }
     if (isSuccess) {
-      console.log("newdish");
       dispatch(reset());
       navigate("/my-dishes");
       toast.success("Dish Created!", {

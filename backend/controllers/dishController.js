@@ -25,7 +25,10 @@ const getMyDishes = asyncHandler(async (req, res) => {
 // @access  Public
 const getPublicDishes = asyncHandler(async (req, res) => {
   //find all dishes that is public
-  const dishes = await Dish.find({ isPublic: true });
+  const dishes = await Dish.find({
+    // $and: [{ isPublic: true }, { author: { $ne: req.user.id } }],
+    isPublic: true,
+  });
 
   res.status(200).json(dishes);
 });
