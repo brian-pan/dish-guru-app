@@ -8,7 +8,7 @@ function MyDishItem({ dish }) {
   return (
     <div className="dish-card">
       <div className="dish-card-title">
-        <div>{dish.name}</div>
+        <h4>{dish.name}</h4>
         <div>
           {dish.isPublic && (
             <div className="dish-card-isPublic">

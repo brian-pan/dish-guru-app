@@ -27,7 +27,7 @@ function MyDishes() {
   }
 
   return (
-    <>
+    <div className="dish-page">
       <div className="dish-buttons">
         <BackButton url="/" />
         {/* <AddButton url="/new-dish" /> */}
@@ -41,7 +41,7 @@ function MyDishes() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -191,7 +191,7 @@ h3 {
 }
 
 .dish-page {
-  padding: 15px;
+  padding: 5px;
   .dish-header {
     h2 {
       text-align: center;
@@ -205,6 +205,18 @@ h3 {
         margin-left: 10px;
       }
     }
+
+    p {
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .dish-description {
+  }
+
+  .dish-steps {
   }
 }
 

@@ -28,7 +28,7 @@ function PublicDishes() {
   }
 
   return (
-    <>
+    <div className="dish-page">
       <div className="dish-buttons">
         <BackButton url="/" />
       </div>
@@ -40,7 +40,7 @@ function PublicDishes() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
