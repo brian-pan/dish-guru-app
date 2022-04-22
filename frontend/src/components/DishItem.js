@@ -10,15 +10,15 @@ function DishItem({ dish }) {
       <div className="dish-card-title">
         <div>{dish.name}</div>
         <div>
-          {dish.diet !== "Normal" && <FaLeaf />}
-          {dish.diet}
+          {dish.isPublic && (
+            <div className="dish-card-isPublic">
+              <p>Public</p>
+            </div>
+          )}
         </div>
       </div>
-      {dish.isPublic && (
-        <div className="dish-card-isPublic">
-          <p>Public</p>
-        </div>
-      )}
+      {dish.diet !== "Normal" && <FaLeaf />}
+      {dish.diet}
       <div className="dish-card-description">
         <p>{dish.description}</p>
       </div>

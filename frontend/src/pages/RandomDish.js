@@ -14,6 +14,7 @@ function RandomDish() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("effect");
     return () => {
       if (isSuccess) {
         dispatch(reset());
@@ -25,28 +26,16 @@ function RandomDish() {
     dispatch(getMyDishes());
   }, [dispatch]);
 
-  const randomNum = Math.floor(Math.random() * dishes.length);
-  console.log(Math.random() * dishes.length);
-  console.log(randomNum);
-
-  const onClick = () => {
-    const dish = dishes[randomNum];
+  const dish = dishes[Math.floor(Math.random() * dishes.length)];
+  if (!!dish) {
     navigate(`/my-dishes/${dish._id}`);
-  };
+  }
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  return (
-    <div className="heading">
-      <BackButton url="/" />
-      <h1>Random Dish</h1>
-      <button className="btn btn-block" onClick={onClick}>
-        Get Dish
-      </button>
-    </div>
-  );
+  return <></>;
 }
 
 export default RandomDish;

@@ -15,7 +15,7 @@ const getMyDishes = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const dishes = await Dish.find({ user: req.user.id });
+  const dishes = await Dish.find({ author: req.user.id });
 
   res.status(200).json(dishes);
 });

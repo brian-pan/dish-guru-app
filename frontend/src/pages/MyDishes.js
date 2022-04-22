@@ -34,7 +34,7 @@ function MyDishes() {
       </div>
       <h1 className="page-title">My Dishes</h1>
       <div className="dish-cards">
-        <div className="dish-heading"></div>
+        {dishes.length ? null : <h3> You don't have any recipe yet...</h3>}
         <div className="dish-body">
           {dishes.map((dish) => (
             <DishItem key={dish._id} dish={dish} />
