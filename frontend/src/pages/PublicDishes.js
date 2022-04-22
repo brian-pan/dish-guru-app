@@ -19,10 +19,9 @@ function PublicDishes() {
 
   useEffect(() => {
     dispatch(getPublicDishes());
-    console.log(dishes);
   }, [dispatch]);
 
-  console.log(dishes);
+  // console.log(dishes);
 
   if (isLoading) {
     return <Spinner />;

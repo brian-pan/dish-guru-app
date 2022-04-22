@@ -34,7 +34,6 @@ const getPublicDishes = async (token) => {
     },
   };
   const response = await axios.get(API_URL_PU, config);
-
   return response.data;
 };
 
@@ -50,11 +49,24 @@ const getMyDish = async (dishId, token) => {
   return response.data;
 };
 
+//get private dish (show page)
+const getPublicDish = async (dishId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL_PU + dishId, config);
+
+  return response.data;
+};
+
 const dishService = {
   createDish,
   getMyDishes,
   getMyDish,
   getPublicDishes,
+  getPublicDish,
 };
 
 export default dishService;

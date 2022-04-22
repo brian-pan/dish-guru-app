@@ -5,17 +5,15 @@ function PublicDishItem({ dish }) {
   return (
     <div className="dish-card">
       <div className="dish-card-title">
-        <div>{dish.name}</div>
+        <h4>{dish.name}</h4>
         <div>
-          {dish.isPublic && (
-            <div className="dish-card-isPublic">
-              <p>Public</p>
-            </div>
-          )}
+          {dish.diet !== "Normal" && <FaLeaf />}
+          {dish.diet}
         </div>
       </div>
-      {dish.diet !== "Normal" && <FaLeaf />}
-      {dish.diet}
+      <div className="dish-card-author">
+        By <span>{dish.author}</span>
+      </div>
       <div className="dish-card-description">
         <p>{dish.description}</p>
       </div>

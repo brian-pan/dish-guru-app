@@ -63,7 +63,7 @@ const getMyDish = asyncHandler(async (req, res) => {
 // @route   GET /api/dishes/:dishId
 // @access  Public
 const getPublicDish = asyncHandler(async (req, res) => {
-  const dish = await Dish.findById(req.params.dishId);
+  const dish = await Dish.findById(req.params.dishId).populate("author");
   if (!dish) {
     res.status(404);
     throw new Error("Dish Page Not Found");

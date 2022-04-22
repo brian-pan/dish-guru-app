@@ -176,6 +176,13 @@ h3 {
     }
   }
 
+  .dish-card-author {
+    font-size: 0.9em;
+    span {
+      font-weight: 700;
+    }
+  }
+
   .dish-card-description {
     display: flex;
     justify-content: center;
