@@ -28,7 +28,7 @@ const getPublicDishes = asyncHandler(async (req, res) => {
   const dishes = await Dish.find({
     // $and: [{ isPublic: true }, { author: { $ne: req.user.id } }],
     isPublic: true,
-  });
+  }).populate("author");
 
   res.status(200).json(dishes);
 });
@@ -126,7 +126,7 @@ const updateDish = asyncHandler(async (req, res) => {
   //only owner can view its own dish
   if (dish.author.toString() !== req.user.id) {
     res.status(401);
-    throw new Error("Not Authorized to update ticket");
+    throw new Error("Not Authorized to update dish");
   }
 
   const updatedDish = await Dish.findByIdAndUpdate(
@@ -137,7 +137,6 @@ const updateDish = asyncHandler(async (req, res) => {
     }
   );
 
-  //return
   res.status(200).json(updatedDish);
 });
 

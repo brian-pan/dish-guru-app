@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Review = require("./reviewModel");
 const Schema = mongoose.Schema;
 
 const dishSchema = Schema(
@@ -8,6 +9,12 @@ const dishSchema = Schema(
       required: true,
       ref: "User",
     },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
     name: {
       type: String,
       required: [true, "Please specify the dish name"],

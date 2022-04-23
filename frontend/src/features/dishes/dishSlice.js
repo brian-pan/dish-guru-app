@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 import dishService from "./dishService";
 
 const initialState = {
@@ -56,8 +57,9 @@ export const getPublicDishes = createAsyncThunk(
   "dishes/getAllPublic",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await dishService.getPublicDishes(token);
+      const user = thunkAPI.getState().auth.user;
+      console.log(user);
+      return await dishService.getPublicDishes();
     } catch (error) {
       const message =
         (error.response &&
@@ -91,13 +93,53 @@ export const getMyDish = createAsyncThunk(
   }
 );
 
-//get single dish (private, show detail page)
+//get single dish (public, show detail page)
 export const getPublicDish = createAsyncThunk(
   "dishes/getPublic",
   async (dishId, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await dishService.getPublicDish(dishId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//update single dish (private)
+export const updateDish = createAsyncThunk(
+  "dishes/getPrivate",
+  async (dishId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await dishService.updateDish(dishId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//delete dish (private)
+export const deleteDish = createAsyncThunk(
+  "dishes/delete",
+  async (dishId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await dishService.deleteDish(dishId, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -185,6 +227,20 @@ export const dishSlice = createSlice({
         state.dish = action.payload; //important step
       })
       .addCase(getPublicDish.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteDish.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteDish.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.dish = null; //important step
+        // state.dishes.map(dish => dish._id === action.payload._id ? )
+      })
+      .addCase(deleteDish.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

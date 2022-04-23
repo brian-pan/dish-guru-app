@@ -29,7 +29,6 @@ function PublicDish() {
     return <Spinner />;
   }
 
-  console.log(dish);
   return (
     <div className="dish-page">
       <header className="dish-header">

@@ -127,8 +127,14 @@ h3 {
 }
 
 .btn-danger {
-  background: darkred;
-  border: none;
+  background: #fff;
+  border: 1px solid darkred;
+  color: darkred;
+
+  &:hover {
+    background-color: darkred;
+    color: #fff;
+  }
 }
 
 .btn-sm {
@@ -193,6 +199,13 @@ h3 {
 .dish-page {
   padding: 5px;
   .dish-header {
+    .dish-buttons {
+      display: flex;
+      justify-content: space-between;
+      button {
+      }
+    }
+
     h2 {
       text-align: center;
     }

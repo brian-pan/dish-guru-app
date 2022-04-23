@@ -43,10 +43,10 @@ function NewDish() {
   }, [dispatch, isError, isSuccess, navigate, message]);
 
   const onChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
@@ -125,7 +125,16 @@ function NewDish() {
               onChange={onChange}
             ></textarea>
           </div>
-          <div>{/* isPublic checkbox here */}</div>
+          <div className="form-group">
+            <label htmlFor="isPublic">Public?</label>
+            <input
+              type="checkbox"
+              name="isPublic"
+              id="isPublic"
+              checked={isPublic}
+              onChange={onChange}
+            />
+          </div>
           <div className="form-group">
             <button className="btn btn-block">Add</button>
           </div>

@@ -12,7 +12,7 @@ function PublicDishItem({ dish }) {
         </div>
       </div>
       <div className="dish-card-author">
-        By <span>{dish.author}</span>
+        By <span>{dish.author.name}</span>
       </div>
       <div className="dish-card-description">
         <p>{dish.description}</p>

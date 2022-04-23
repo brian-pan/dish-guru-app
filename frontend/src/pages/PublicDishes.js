@@ -21,7 +21,7 @@ function PublicDishes() {
     dispatch(getPublicDishes());
   }, [dispatch]);
 
-  // console.log(dishes);
+  console.log(dishes);
 
   if (isLoading) {
     return <Spinner />;
