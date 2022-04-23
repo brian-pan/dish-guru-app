@@ -60,9 +60,9 @@ function NewDish() {
   }
 
   return (
-    <>
+    <div className="dish-page">
+      <BackButton url="/" />
       <section className="heading">
-        <BackButton url="/" />
         <h1>Add new dish</h1>
         <p>Please fill out the form below</p>
       </section>
@@ -125,8 +125,8 @@ function NewDish() {
               onChange={onChange}
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="isPublic">Public?</label>
+          <div className="form-group form-group-checkbox">
+            <label htmlFor="isPublic">Show dish publicly?</label>
             <input
               type="checkbox"
               name="isPublic"
@@ -140,7 +140,7 @@ function NewDish() {
           </div>
         </form>
       </section>
-    </>
+    </div>
   );
 }
 

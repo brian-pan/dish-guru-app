@@ -90,9 +90,12 @@ function MyDish() {
   }
 
   return (
-    <>
+    <div className="dish-page">
       {isEditing ? (
         <section className="form">
+          <div className="heading">
+            <h1>Editing Dish</h1>
+          </div>
           <form onSubmit={onSubmit}>
             {/* back button */}
             <div className="form-group">
@@ -141,7 +144,7 @@ function MyDish() {
                 onChange={onChange}
               ></textarea>
             </div>
-            <div className="form-group">
+            <div className="form-group form-group-checkbox">
               <label htmlFor="isPublic">Public?</label>
               <input
                 type="checkbox"
@@ -202,7 +205,7 @@ function MyDish() {
           </section>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
