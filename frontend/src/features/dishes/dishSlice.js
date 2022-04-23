@@ -115,11 +115,11 @@ export const getPublicDish = createAsyncThunk(
 
 //update single dish (private)
 export const updateDish = createAsyncThunk(
-  "dishes/getPrivate",
-  async (dishId, thunkAPI) => {
+  "dishes/update",
+  async ({ dishId, editItem }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await dishService.updateDish(dishId, token);
+      return await dishService.updateDish(dishId, editItem, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -159,11 +159,12 @@ export const dishSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
-    // resetLoadingState: (state) => ({
-    //   isLoading: false,
-    //   isSuccess: false,
-    //   isError: false,
-    // }),
+    resetLoadingState: (state) => ({
+      ...state,
+      isLoading: false,
+      isSuccess: false,
+      isError: false,
+    }),
   },
   extraReducers: (builder) => {
     builder
@@ -231,6 +232,19 @@ export const dishSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(updateDish.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateDish.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.dish = action.payload; //important step
+      })
+      .addCase(updateDish.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(deleteDish.pending, (state) => {
         state.isLoading = true;
       })
@@ -248,5 +262,5 @@ export const dishSlice = createSlice({
   },
 });
 
-export const { reset } = dishSlice.actions;
+export const { reset, resetLoadingState } = dishSlice.actions;
 export default dishSlice.reducer;

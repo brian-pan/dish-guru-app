@@ -18,7 +18,7 @@ function NewDish() {
     name: "",
     diet: "Normal",
     description: "",
-    steps: [""],
+    steps: "",
     isPublic: false,
   });
   const { name, diet, description, steps, isPublic } = formData;

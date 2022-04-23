@@ -7,6 +7,7 @@ import {
   updateDish,
   deleteDish,
   reset,
+  resetLoadingState,
 } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
@@ -30,15 +31,19 @@ function MyDish() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(isSuccess);
     if (isError) {
       toast.error(message);
     }
 
     dispatch(getMyDish(dishId));
+    dispatch(resetLoadingState());
+    console.log("getMyDish", isSuccess);
   }, [dispatch, message, dishId]);
 
   //enter edit mode
   const onEdit = () => {
+    console.log("onEdit", isSuccess);
     if (!!dish) {
       setIsEditing(true);
       setEditItem(dish); //Need ...dish?
@@ -53,12 +58,19 @@ function MyDish() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+  // console.log(editItem);
 
   //submit updated form to backend
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateDish(dishId, editItem));
-    // {set back to initial state}
+    console.log("before", isSuccess);
+    dispatch(updateDish({ dishId, editItem }));
+    dispatch(resetLoadingState());
+    console.log(isSuccess);
+    // set back to initial state
+
+    setIsEditing(false);
+    setEditItem({});
   };
 
   //delete dish page from backend and re-get rest pages
@@ -82,6 +94,7 @@ function MyDish() {
       {isEditing ? (
         <section className="form">
           <form onSubmit={onSubmit}>
+            {/* back button */}
             <div className="form-group">
               <label htmlFor="name">Dish Name</label>
               <input
@@ -139,7 +152,7 @@ function MyDish() {
               />
             </div>
             <div className="form-group">
-              <button className="btn btn-block">Add</button>
+              <button className="btn btn-block">Update</button>
             </div>
           </form>
         </section>
@@ -148,11 +161,14 @@ function MyDish() {
           <header className="dish-header">
             <div className="dish-buttons">
               <BackButton url="/my-dishes" />
-              {dish.author === user._id ? (
+              {/* {dish.author === user._id ? (
                 <button className="btn btn-back" onClick={onEdit}>
                   Edit
                 </button>
-              ) : null}
+              ) : null} */}
+              <button className="btn btn-back" onClick={onEdit}>
+                Edit
+              </button>
             </div>
             <h2>{dish.name}</h2>
             <div>
