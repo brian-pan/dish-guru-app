@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
 //Routes
 app.use("/api/users/", require("./routes/userRoutes"));
 app.use("/api/", require("./routes/dishRoutes"));
+app.use("/api/my-dishes/:dishId/reviews/", require("./routes/reviewRoutes"));
+app.use("/api/dishes/:dishId/reviews/", require("./routes/reviewRoutes"));
 
 //error handler
 app.use(errorHandler);

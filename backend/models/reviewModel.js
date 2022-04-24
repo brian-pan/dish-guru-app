@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const reviewSchema = Schema({
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   rating: {
     type: Number,
     required: true,
@@ -10,9 +15,9 @@ const reviewSchema = Schema({
     type: String,
     required: true,
   },
-  author: {
+  dish: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Dish",
     required: true,
   },
 });
