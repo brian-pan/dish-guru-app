@@ -50,13 +50,13 @@ const getMyDish = async (dishId, token) => {
 };
 
 //get single public dish (show page)
-const getPublicDish = async (dishId, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const response = await axios.get(API_URL_PU + dishId, config);
+const getPublicDish = async (dishId) => {
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
+  const response = await axios.get(API_URL_PU + dishId);
 
   return response.data;
 };

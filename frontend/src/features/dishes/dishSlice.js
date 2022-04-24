@@ -57,8 +57,6 @@ export const getPublicDishes = createAsyncThunk(
   "dishes/getAllPublic",
   async (_, thunkAPI) => {
     try {
-      const user = thunkAPI.getState().auth.user;
-      console.log(user);
       return await dishService.getPublicDishes();
     } catch (error) {
       const message =
@@ -98,8 +96,8 @@ export const getPublicDish = createAsyncThunk(
   "dishes/getPublic",
   async (dishId, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await dishService.getPublicDish(dishId, token);
+      // const token = thunkAPI.getState().auth.user.token;
+      return await dishService.getPublicDish(dishId);
     } catch (error) {
       const message =
         (error.response &&

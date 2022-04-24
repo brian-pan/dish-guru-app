@@ -46,7 +46,9 @@ const getReviews = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  const reviews = await Review.find({ dish: req.params.dishId });
+  const reviews = await Review.find({ dish: req.params.dishId }).populate(
+    "author"
+  );
 
   res.status(200).json(reviews);
 });

@@ -25,6 +25,7 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
+    "react-modal": "^3.14.4",
     "sass": "^1.50.1"
   }
 }
