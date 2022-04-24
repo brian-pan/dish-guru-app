@@ -4,11 +4,26 @@ import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { getPublicDish } from "../features/dishes/dishSlice";
-import { getReviews } from "../features/reviews/reviewSlice";
+import { createReview, getReviews } from "../features/reviews/reviewSlice";
 import { FaPlus } from "react-icons/fa";
 import ReviewItem from "../components/ReviewItem";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+
+const customStyles = {
+  content: {
+    width: "100%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    position: "relative",
+  },
+};
+
+Modal.setAppElement("#root");
 
 function PublicDish() {
   const { dish, isSuccess, isLoading, isError, message } = useSelector(
@@ -18,11 +33,22 @@ function PublicDish() {
     reviews,
     isSuccess: reviewIsSuccess,
     isLoading: reviewIsLoading,
-    isError: reviewIsError,
-    message: reviewMessage,
+    // isError: reviewIsError,
+    // message: reviewMessage,
   } = useSelector((state) => state.reviews);
 
   const [isReviewShown, setIsReviewShown] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [reviewFormData, setReviewFormData] = useState({
+    reviewText: "",
+    rating: 1,
+  });
+
+  const { reviewText, rating } = reviewFormData;
+
+  const average = Math.round(
+    reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+  );
 
   //initialize
   const params = useParams();
@@ -30,8 +56,19 @@ function PublicDish() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onAddReview = () => {
-    console.log("add review");
+  const onReviewTextChange = (e) => {
+    setReviewFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  console.log(reviewFormData);
+
+  const onReviewSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createReview(dishId, reviewFormData));
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -55,6 +92,15 @@ function PublicDish() {
         <div>
           <h3 className={`dish-diet dish-diet-${dish.diet}`}>{dish.diet}</h3>
         </div>
+        <div className="dish-ratings">
+          {/* avg review rating and total numbers */}
+          {reviews.length !== 0 && (
+            <div className="dish-ratings-rating">
+              {isNaN(average) ? 0 : average}/5 Stars
+            </div>
+          )}
+          <div className="dish-ratings-number">{reviews.length} Reviews</div>
+        </div>
         {dish.author ? (
           <p>
             Author: <span>{dish.author.name}</span>
@@ -73,10 +119,44 @@ function PublicDish() {
       </section>
       <hr />
       <section className="dish-reviews">
-        <button className="btn btn-block" onClick={onAddReview}>
+        <button className="btn btn-block" onClick={() => setIsModalOpen(true)}>
           <FaPlus />
           Add a review
         </button>
+
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          style={customStyles}
+          contentLabel="Add Review"
+        >
+          <div className="header">
+            <h2>Add Review</h2>
+            <button className="btn-close" onClick={() => setIsModalOpen(false)}>
+              X
+            </button>
+          </div>
+          <form onSubmit={onReviewSubmit} className="form">
+            <div className="form-group">{/* Rating goes here */}</div>
+            <div className="form-group">
+              <textarea
+                name="reviewText"
+                id="reviewText"
+                rows="10"
+                className="form-control"
+                placeholder="Review text"
+                value={reviewText}
+                onChange={onReviewTextChange}
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <button className="btn btn-block" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </Modal>
+
         <h4 onClick={() => setIsReviewShown(!isReviewShown)}>
           {isReviewShown ? "Hide" : "View"} all reviews
         </h4>

@@ -265,6 +265,11 @@ h3 {
         font-weight: 700;
       }
     }
+
+    .dish-ratings {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .dish-reviews {
