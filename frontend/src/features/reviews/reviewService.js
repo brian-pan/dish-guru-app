@@ -4,13 +4,17 @@ const API_URL_PU = "/api/dishes/";
 const API_URL_MY = "/api/my-dishes/";
 
 //create a review
-const createReview = async (dishId, token) => {
+const createReview = async (dishId, reviewFormData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.post(API_URL_PU + dishId + "/reviews", config);
+  const response = await axios.post(
+    API_URL_PU + dishId + "/reviews",
+    reviewFormData,
+    config
+  );
 
   return response.data;
 };

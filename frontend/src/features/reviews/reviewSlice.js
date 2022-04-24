@@ -13,10 +13,10 @@ const initialState = {
 //create a review
 export const createReview = createAsyncThunk(
   "reviews/create",
-  async (dishId, thunkAPI) => {
+  async ({ dishId, reviewFormData }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await reviewService.createReview(dishId, token);
+      return await reviewService.createReview(dishId, reviewFormData, token);
     } catch (error) {
       const message =
         (error.response &&

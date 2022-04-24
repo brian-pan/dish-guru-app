@@ -26,6 +26,13 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 function PublicDish() {
+  //initialize
+  const params = useParams();
+  const { dishId } = params;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
   const { dish, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.dishes
   );
@@ -42,19 +49,17 @@ function PublicDish() {
   const [reviewFormData, setReviewFormData] = useState({
     reviewText: "",
     rating: 1,
+    author: user._id,
+    dish: dishId,
   });
 
+  console.log("user", user);
+  console.log("dish:", dish);
   const { reviewText, rating } = reviewFormData;
 
   const average = Math.round(
     reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
   );
-
-  //initialize
-  const params = useParams();
-  const { dishId } = params;
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const onReviewTextChange = (e) => {
     setReviewFormData((prevState) => ({
@@ -63,11 +68,11 @@ function PublicDish() {
     }));
   };
 
-  console.log(reviewFormData);
+  console.log("reviewFormData:", reviewFormData);
 
   const onReviewSubmit = (e) => {
     e.preventDefault();
-    dispatch(createReview(dishId, reviewFormData));
+    dispatch(createReview({ dishId, reviewFormData }));
     setIsModalOpen(false);
   };
 
