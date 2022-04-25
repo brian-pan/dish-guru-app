@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { Button, TextField } from "@mui/material";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ function Register() {
     //redirect when logged in
     if (isSuccess || user) {
       navigate("/");
-      toast.success(`Welcome to SpicesMaster, ${user.name}!`, {
+      toast.success(`Welcome to DishGuru, ${user.name}!`, {
         autoClose: 1500,
       });
     }
@@ -68,7 +69,7 @@ function Register() {
   }
 
   return (
-    <>
+    <div className="page">
       <section className="heading">
         <h1>
           <FaUser /> Register
@@ -79,59 +80,84 @@ function Register() {
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
+            <TextField
+              label="Name"
+              variant="outlined"
               id="name"
+              className="form-control"
+              placeholder="Enter name"
+              type="text"
               name="name"
               value={name}
               onChange={onChange}
-              placeholder="Enter Name"
+              size="small"
+              fullWidth
               required
             />
           </div>
           <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
+            <TextField
+              label="Email"
+              variant="outlined"
               id="email"
+              className="form-control"
+              placeholder="Enter email"
+              type="email"
               name="email"
               value={email}
               onChange={onChange}
-              placeholder="Enter Email"
+              size="small"
+              fullWidth
               required
             />
           </div>
           <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
+            <TextField
               id="password"
+              className="form-control"
+              type="password"
               name="password"
               value={password}
               onChange={onChange}
-              placeholder="Enter Password"
+              label="Password"
+              variant="outlined"
+              fullWidth
+              size="small"
+              placeholder="Enter password"
               required
             />
           </div>
           <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
+            <TextField
               id="password2"
+              className="form-control"
+              type="password"
               name="password2"
               value={password2}
               onChange={onChange}
-              placeholder="Confirm Password"
+              label="Confirm Password"
+              variant="outlined"
+              fullWidth
+              size="small"
+              placeholder="Confirm password"
               required
             />
           </div>
           <div className="form-group">
-            <button className="btn btn-block">Submit</button>
+            <Button variant="contained" type="submit" fullWidth>
+              Register
+            </Button>
+          </div>
+          <div className="form-group registerToLoginLink">
+            <Link to="/login" id="registerToLoginLink">
+              Already have an account? Login
+            </Link>
           </div>
         </form>
       </section>
-    </>
+
+      <footer className="copyright">&copy; Zifan Pan 2022</footer>
+    </div>
   );
 }
 

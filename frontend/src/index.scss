@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
+// global settings
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +34,25 @@ h3 {
   font-weight: 600;
 }
 
+.copyright {
+  color: rgb(170, 170, 170);
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}
+
+.container {
+  width: 100%;
+  max-width: 960px; //marked
+  margin: 0 auto;
+  // padding: 0 20px;
+}
+
+.page {
+}
+
+//reuseable components settings
 .btn {
   padding: 10px 20px;
   border: 1px solid #000;
@@ -91,11 +111,20 @@ h3 {
   padding: 10px;
 }
 
-.container {
-  width: 100%;
-  max-width: 960px; //marked
-  margin: 0 auto;
-  // padding: 0 20px;
+.heading {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding: 0 20px;
+
+  p {
+    color: #828282;
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .header {
@@ -131,47 +160,40 @@ h3 {
   }
 }
 
-.heading {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 30px;
-  padding: 0 20px;
-
-  p {
-    color: #828282;
-    text-align: center;
-  }
-
-  h1 {
-    text-align: center;
-  }
-}
-
-.home-links {
-  padding: 0 20px;
-}
-
 .form {
   width: 70%;
   margin: 0 auto;
 
   .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #e6e6e6;
-      border-radius: 0.5em;
-    }
+    // input,
+    // textarea,
+    // select {
+    //   width: 100%;
+    //   // padding: 10px;
+    //   // border: 1px solid #e6e6e6;
+    //   // border-radius: 0.5em;
+    // }
 
-    label {
-      text-align: left;
-      display: block;
-      margin: 0 0 5px 3px;
-    }
+    // label {
+    //   text-align: left;
+    //   display: block;
+    //   margin: 0 0 5px 3px;
+    // }
+  }
+
+  .loginToRegisterLink,
+  .registerToLoginLink {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #loginToRegisterLink,
+  #registerToLoginLink {
+    text-decoration: underline;
+    color: #1976d2;
+    // font-size: 0.8em;
   }
 
   .form-group-checkbox {
@@ -185,6 +207,7 @@ h3 {
   }
 }
 
+//specified components
 .dish-body {
   padding: 5px;
 }
@@ -286,6 +309,7 @@ h3 {
   }
 }
 
+//animations
 .loadingSpinnerContainer {
   position: fixed;
   top: 0;

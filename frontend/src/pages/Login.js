@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
+import { Button, TextField } from "@mui/material";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -74,35 +75,53 @@ function Login() {
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
+            <TextField
+              label="Email"
+              variant="outlined"
               id="email"
+              className="form-control"
+              placeholder="Enter email"
+              type="email"
               name="email"
               value={email}
               onChange={onChange}
-              placeholder="Enter Email"
+              size="small"
+              fullWidth
               required
             />
           </div>
           <div className="form-group">
-            <input
-              type="password"
-              className="form-control"
+            <TextField
               id="password"
+              className="form-control"
+              type="password"
               name="password"
               value={password}
               onChange={onChange}
-              placeholder="Enter Password"
+              label="Password"
+              variant="outlined"
+              fullWidth
+              size="small"
+              placeholder="Enter password"
               required
             />
           </div>
 
           <div className="form-group">
-            <button className="btn btn-block">Login</button>
+            {/* <button className="btn btn-block">Login</button> */}
+            <Button variant="contained" type="submit" fullWidth>
+              Login
+            </Button>
+          </div>
+          <div className="form-group loginToRegisterLink">
+            <Link to="/register" id="loginToRegisterLink">
+              Don't have an account? Register
+            </Link>
           </div>
         </form>
       </section>
+
+      <footer className="copyright">&copy; Zifan Pan 2022</footer>
     </>
   );
 }
