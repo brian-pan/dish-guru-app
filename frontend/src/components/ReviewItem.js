@@ -1,8 +1,8 @@
-function ReviewItem({ review }) {
+function ReviewItem({ review, username }) {
   return (
     <div className="review-card">
       <div className="review-card-header review-card-username">
-        By <span>{review.author.name}</span>
+        By <span>{username}</span>
       </div>
       <div className="review-card-body">
         <div className="review-card-rating">Rating: {review.rating}</div>

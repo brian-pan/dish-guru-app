@@ -47,7 +47,7 @@ function PublicDish() {
   const [isReviewShown, setIsReviewShown] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reviewFormData, setReviewFormData] = useState({
-    reviewText: "",
+    text: "",
     rating: 1,
     author: user._id,
     dish: dishId,
@@ -55,13 +55,13 @@ function PublicDish() {
 
   console.log("user", user);
   console.log("dish:", dish);
-  const { reviewText, rating } = reviewFormData;
+  const { text, rating } = reviewFormData;
 
   const average = Math.round(
     reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
   );
 
-  const onReviewTextChange = (e) => {
+  const onTextChange = (e) => {
     setReviewFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -145,13 +145,13 @@ function PublicDish() {
             <div className="form-group">{/* Rating goes here */}</div>
             <div className="form-group">
               <textarea
-                name="reviewText"
-                id="reviewText"
+                name="text"
+                id="text"
                 rows="10"
                 className="form-control"
                 placeholder="Review text"
-                value={reviewText}
-                onChange={onReviewTextChange}
+                value={text}
+                onChange={onTextChange}
               ></textarea>
             </div>
             <div className="form-group">
@@ -168,7 +168,11 @@ function PublicDish() {
         {isReviewShown ? (
           <div className="dish-reviews-cards">
             {reviews.map((review) => (
-              <ReviewItem key={review._id} review={review} />
+              <ReviewItem
+                key={review._id}
+                review={review}
+                username={user.name}
+              />
             ))}
           </div>
         ) : null}
