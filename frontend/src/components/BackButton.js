@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { IoIosArrowDropleft } from "react-icons/io";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 
 function BackButton({ url }) {
   return (
     <Link to={url} className="btn btn-back">
-      <IoIosArrowDropleft />
+      <ArrowCircleLeftOutlinedIcon />
       Back
     </Link>
   );

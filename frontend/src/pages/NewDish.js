@@ -5,6 +5,17 @@ import { createDish, reset } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
+import {
+  Button,
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControl,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 
 function NewDish() {
   //global state
@@ -68,75 +79,109 @@ function NewDish() {
       </section>
       <section className="form">
         <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
+          <TextField
+            label="Username"
+            variant="outlined"
             id="username"
-            name="username"
             className="form-control"
+            placeholder="Enter username"
+            type="text"
+            name="username"
             value={username}
+            onChange={onChange}
+            size="small"
+            fullWidth
             disabled
           />
         </div>
         <form onSubmit={onSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Dish Name</label>
-            <input
-              type="text"
+            <TextField
+              label="Dish Name"
+              variant="outlined"
               id="name"
-              name="name"
               className="form-control"
+              placeholder="Dish Name"
+              type="text"
+              name="name"
               value={name}
               onChange={onChange}
+              size="small"
+              fullWidth
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="diet">Diet Type</label>
-            <select name="diet" id="diet" value={diet} onChange={onChange}>
-              <option value="Normal">Normal</option>
-              <option value="Vegetarian">Vegetarian</option>
-              <option value="Vegan">Vegan</option>
-            </select>
+            <FormControl fullWidth>
+              <InputLabel id="diet">Diet Type</InputLabel>
+              <Select
+                labelId="diet"
+                id="diet"
+                value={diet}
+                label="Diet Type"
+                onChange={onChange}
+                name="diet"
+              >
+                <MenuItem value="Normal">Regular</MenuItem>
+                <MenuItem value="Vegetarian">Vegetarian</MenuItem>
+                <MenuItem value="Vegan">Vegan</MenuItem>
+              </Select>
+            </FormControl>
           </div>
 
           <div className="form-group">
-            <label htmlFor="steps">Cooking Instruction Steps</label>
-            <textarea
+            <TextField
+              className="form-control"
+              label="Cooking Instruction"
+              variant="outlined"
               name="steps"
               id="steps"
-              className="form-control"
-              placeholder="Steps 1, 2, 3..."
+              placeholder="Step 1..."
+              type="text"
               value={steps}
               onChange={onChange}
-            ></textarea>
+              size="small"
+              fullWidth
+            />
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">
-              Brief Description of dish (Optional)
-            </label>
-            <textarea
+            <TextField
+              className="form-control"
+              label="Description"
+              variant="outlined"
               name="description"
               id="description"
-              className="form-control"
-              placeholder="Description"
+              placeholder="Brief description of dish (optional)"
+              type="text"
               value={description}
               onChange={onChange}
-            ></textarea>
-          </div>
-          <div className="form-group form-group-checkbox">
-            <label htmlFor="isPublic">Show dish publicly?</label>
-            <input
-              type="checkbox"
-              name="isPublic"
-              id="isPublic"
-              checked={isPublic}
-              onChange={onChange}
+              size="small"
+              fullWidth
             />
           </div>
+
+          <div className="form-group form-group-checkbox">
+            <FormGroup>
+              <FormControlLabel
+                labelPlacement="start"
+                label="Show dish publicly?"
+                control={
+                  <Checkbox
+                    name="isPublic"
+                    id="isPublic"
+                    checked={isPublic}
+                    onChange={onChange}
+                    color="success"
+                  />
+                }
+              />
+            </FormGroup>
+          </div>
           <div className="form-group">
-            <button className="btn btn-block">Add</button>
+            <Button type="submit" variant="contained" color="success" fullWidth>
+              Add
+            </Button>
           </div>
         </form>
       </section>
