@@ -20,13 +20,13 @@ const createReview = async (dishId, reviewFormData, token) => {
 };
 
 //get all reviews of dishes (public)
-const getReviews = async (dishId, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const response = await axios.get(API_URL_PU + dishId + "/reviews", config);
+const getReviews = async (dishId) => {
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
+  const response = await axios.get(API_URL_PU + dishId + "/reviews");
 
   return response.data;
 };

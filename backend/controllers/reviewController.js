@@ -39,13 +39,6 @@ const createReview = asyncHandler(async (req, res) => {
 // @route   GET /api/dishes||my-dishes/:dishId/reviews
 // @access  Public
 const getReviews = asyncHandler(async (req, res) => {
-  // Get user using the id in the JWT
-  const user = await User.findById(req.user.id);
-  if (!user) {
-    res.status(401);
-    throw new Error("User not found");
-  }
-
   const reviews = await Review.find({ dish: req.params.dishId }).populate(
     "author"
   );

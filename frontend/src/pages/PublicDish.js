@@ -59,17 +59,16 @@ function PublicDish() {
   console.log("dish:", dish);
   const { text, rating } = reviewFormData;
 
-  let average = Math.round(
-    reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
-  );
-  average = (average * 10) / 10;
+  // let average = Math.round(
+  //   reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+  // );
 
   const onChange = (e) => {
     setReviewFormData((prevState) => ({
       ...prevState,
-      // [e.target.name]: e.target.value,
-      text: e.target.value,
-      rating: parseInt(e.target.value),
+      [e.target.name]: e.target.value,
+      // text: e.target.value,
+      // rating: parseInt(e.target.value),
     }));
   };
 
@@ -105,11 +104,11 @@ function PublicDish() {
         </div>
         <div className="dish-ratings">
           {/* avg review rating and total numbers */}
-          {reviews.length !== 0 && (
+          {/* {reviews.length !== 0 && (
             <div className="dish-ratings-rating">
               {isNaN(average) ? 0 : average}/5 Stars
             </div>
-          )}
+          )} */}
           <div className="dish-ratings-number">{reviews.length} Reviews</div>
         </div>
         {dish.author ? (
@@ -130,24 +129,6 @@ function PublicDish() {
       </section>
       <hr />
       <section className="dish-reviews">
-        {user ? (
-          <Button variant="outlined" onClick={() => setIsModalOpen(true)}>
-            <FaPlus />
-            Add a review
-          </Button>
-        ) : (
-          <Button
-            variant="outlined"
-            fullWidth
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            <FaPlus />
-            Login to add a review
-          </Button>
-        )}
-
         <Modal
           isOpen={isModalOpen}
           onRequestClose={() => setIsModalOpen(false)}
@@ -165,7 +146,11 @@ function PublicDish() {
               <Typography component="legend">
                 <h4>How would you rate the dish?</h4>
               </Typography>
-              <Rating name="rating" value={rating} onChange={onChange} />
+              <Rating
+                name="rating"
+                value={parseInt(rating)}
+                onChange={onChange}
+              />
             </div>
             <div className="form-group">
               <TextField
@@ -187,9 +172,32 @@ function PublicDish() {
           </form>
         </Modal>
 
-        <h4 onClick={() => setIsReviewShown(!isReviewShown)}>
-          {isReviewShown ? "Hide" : "View"} all reviews
-        </h4>
+        <div className="reviews-header">
+          <div>
+            {user ? (
+              <Button color="success" onClick={() => setIsModalOpen(true)}>
+                <FaPlus />
+                Add a review
+              </Button>
+            ) : (
+              <Button
+                fullWidth
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                <FaPlus />
+                Login to add a review
+              </Button>
+            )}
+          </div>
+          <div>
+            <h4 onClick={() => setIsReviewShown(!isReviewShown)}>
+              {isReviewShown ? "Hide" : "View"} all reviews
+            </h4>
+          </div>
+        </div>
+
         {isReviewShown ? (
           <div className="dish-reviews-cards">
             {reviews.map((review) => (

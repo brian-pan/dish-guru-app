@@ -35,8 +35,9 @@ export const getReviews = createAsyncThunk(
   "reviews/getAll",
   async (dishId, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await reviewService.getReviews(dishId, token);
+      // const token = thunkAPI.getState().auth.user.token;
+      // return await reviewService.getReviews(dishId, token);
+      return await reviewService.getReviews(dishId);
     } catch (error) {
       const message =
         (error.response &&

@@ -303,6 +303,10 @@ h3 {
     h4 {
       text-decoration: underline;
       cursor: pointer;
+
+      .reviews-header {
+        display: flex;
+      }
     }
   }
 
