@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getMyDish,
@@ -11,7 +11,34 @@ import {
 } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import BackButton from "../components/BackButton";
+import { FaLeaf } from "react-icons/fa";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+import {
+  Button,
+  TextField,
+  Typography,
+  Rating,
+  Chip,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
+const themeBlack = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#000",
+    },
+  },
+});
 
 function MyDish() {
   const { user } = useSelector((state) => state.auth);
@@ -90,118 +117,186 @@ function MyDish() {
   }
 
   return (
-    <div className="dish-page">
+    <div className="page">
       {isEditing ? (
         <section className="form">
-          <div className="heading">
+          <div className="page-heading">
             <h1>Editing Dish</h1>
           </div>
           <form onSubmit={onSubmit}>
             {/* back button */}
             <div className="form-group">
-              <label htmlFor="name">Dish Name</label>
-              <input
-                type="text"
+              <TextField
+                label="Dish Name"
+                variant="outlined"
                 id="name"
-                name="name"
                 className="form-control"
+                placeholder="Dish Name"
+                type="text"
+                name="name"
                 value={name}
                 onChange={onChange}
+                size="small"
+                fullWidth
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="diet">Diet Type</label>
-              <select name="diet" id="diet" value={diet} onChange={onChange}>
-                <option value="Normal">Normal</option>
-                <option value="Vegetarian">Vegetarian</option>
-                <option value="Vegan">Vegan</option>
-              </select>
+              <FormControl fullWidth>
+                <InputLabel id="diet">Diet Type</InputLabel>
+                <Select
+                  labelId="diet"
+                  id="diet"
+                  value={diet}
+                  label="Diet Type"
+                  onChange={onChange}
+                  name="diet"
+                >
+                  <MenuItem value="Normal">Regular</MenuItem>
+                  <MenuItem value="Vegetarian">Vegetarian</MenuItem>
+                  <MenuItem value="Vegan">Vegan</MenuItem>
+                </Select>
+              </FormControl>
             </div>
 
             <div className="form-group">
-              <label htmlFor="steps">Cooking Instruction Steps</label>
-              <textarea
+              <TextField
+                className="form-control"
+                label="Cooking Instruction"
+                variant="outlined"
                 name="steps"
                 id="steps"
-                className="form-control"
-                placeholder="Steps 1, 2, 3..."
+                placeholder="Step 1..."
+                type="text"
                 value={steps}
                 onChange={onChange}
-              ></textarea>
+                size="large"
+                fullWidth
+              />
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">
-                Brief Description of dish (Optional)
-              </label>
-              <textarea
+              <TextField
+                className="form-control"
+                label="Description"
+                variant="outlined"
                 name="description"
                 id="description"
-                className="form-control"
-                placeholder="Description"
+                placeholder="Brief description of dish (optional)"
+                type="text"
                 value={description}
                 onChange={onChange}
-              ></textarea>
-            </div>
-            <div className="form-group form-group-checkbox">
-              <label htmlFor="isPublic">Public?</label>
-              <input
-                type="checkbox"
-                name="isPublic"
-                id="isPublic"
-                checked={isPublic}
-                onChange={onChange}
+                size="large"
+                fullWidth
               />
             </div>
+            <div className="form-group form-group-checkbox">
+              <FormGroup>
+                <FormControlLabel
+                  labelPlacement="start"
+                  label="Show dish publicly?"
+                  control={
+                    <Checkbox
+                      name="isPublic"
+                      id="isPublic"
+                      checked={isPublic}
+                      onChange={onChange}
+                      color="success"
+                    />
+                  }
+                />
+              </FormGroup>
+            </div>
             <div className="form-group">
-              <button className="btn btn-block">Update</button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="success"
+                fullWidth
+              >
+                Update Dish
+              </Button>
             </div>
           </form>
         </section>
       ) : (
-        <div className="dish-page">
-          <header className="dish-header">
-            <div className="dish-buttons">
-              <BackButton url="/my-dishes" />
-              {/* {dish.author === user._id ? (
-                <button className="btn btn-back" onClick={onEdit}>
-                  Edit
-                </button>
-              ) : null} */}
-              <button className="btn btn-back" onClick={onEdit}>
-                Edit
-              </button>
+        <div className="">
+          <header className="page-heading">
+            <div className="page-buttons">
+              <div className="page-backButton">
+                <Button
+                  component={Link}
+                  to="/my-dishes"
+                  variant="outlined"
+                  theme={themeBlack}
+                  size="large"
+                >
+                  <ArrowCircleLeftOutlinedIcon />
+                  Back
+                </Button>
+              </div>
+              <div className="page-editButton">
+                <Button onClick={onEdit} variant="contained" color="success">
+                  Edit Dish
+                </Button>
+              </div>
             </div>
-            <h2>{dish.name}</h2>
             <div>
-              <h3 className={`dish-diet dish-diet-${dish.diet}`}>
-                {dish.diet}
-              </h3>
-              <h3 className={`dish-isPublic-${dish.isPublic}`}>
-                {dish.isPublic ? "Public" : "Private"}
-              </h3>
+              <h1>{dish.name}</h1>
             </div>
-            <p>
-              Created At: {new Date(dish.createdAt).toLocaleString("en-US")}
-            </p>
+
+            <div id="privatePageChips">
+              <div>
+                {dish.isPublic ? (
+                  <Chip label="PUBLIC" variant="contained" color="secondary" />
+                ) : (
+                  <Chip label="PRIVATE" variant="contained" color="info" />
+                )}
+              </div>
+              <div>
+                {dish.diet === "Normal" ? (
+                  <Chip
+                    label="Regular Diet"
+                    variant="outlined"
+                    theme={themeBlack}
+                    color="primary"
+                  />
+                ) : (
+                  <Chip
+                    icon={<FaLeaf />}
+                    label={dish.diet}
+                    variant="outlined"
+                    color="success"
+                  />
+                )}
+              </div>
+            </div>
+            <div className="page-heading-date">
+              <p>
+                Created On: {new Date(dish.createdAt).toLocaleString("en-US")}
+              </p>
+            </div>
           </header>
-          <hr />
-          <section className="dish-body">
-            <div className="dish-description">
-              {dish.description && <h3>Description:</h3>}
+          <section className="page-main">
+            <div className="page-description">
+              <span>"</span>
               {dish.description}
+              <span>"</span>
             </div>
-            {dish.description && <hr />}
             <div className="dish-steps">
               <h3>Cooking Instructions:</h3>
               {dish.steps}
             </div>
           </section>
-          <section className="dish-delete">
-            <button className="btn btn-block btn-danger" onClick={onDelete}>
-              Delete
-            </button>
+          <section className="page-deleteButton">
+            <Button
+              onClick={onDelete}
+              color="error"
+              variant="contained"
+              fullWidth
+            >
+              Delete Dish
+            </Button>
           </section>
         </div>
       )}

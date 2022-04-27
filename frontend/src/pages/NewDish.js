@@ -101,7 +101,7 @@ function NewDish() {
         <h1>Add new dish</h1>
         <p>Please fill out the form below</p>
       </section>
-      <section className="form ">
+      <section className="form">
         <div className="form-group">
           <TextField
             label="Username"

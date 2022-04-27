@@ -1,10 +1,24 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { getMyDishes, reset } from "../features/dishes/dishSlice";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 import MyDishItem from "../components/MyDishItem";
-// import AddButton from "../components/AddButton";
+import { Button } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+
+const themeBlack = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#000",
+    },
+  },
+});
 
 function MyDishes() {
   const { dishes, isLoading, isSuccess } = useSelector((state) => state.dishes);
@@ -29,7 +43,16 @@ function MyDishes() {
   return (
     <div className="page">
       <div className="page-backButton">
-        <BackButton url="/" />
+        <Button
+          component={Link}
+          to="/"
+          variant="outlined"
+          theme={themeBlack}
+          size="large"
+        >
+          <ArrowCircleLeftOutlinedIcon />
+          Back
+        </Button>
         {/* <AddButton url="/new-dish" /> */}
       </div>
       <main className="page-main">
