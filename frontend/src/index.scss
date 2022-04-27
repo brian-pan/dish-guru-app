@@ -44,7 +44,7 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 960px; //marked
+  // max-width: 960px; //marked
   margin: 0 auto;
   // padding: 0 20px;
 }
@@ -92,7 +92,7 @@ h3 {
     // margin: 30px;
     // font-size: 1.8em;
     font-weight: 700;
-    border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+    border-bottom: 1px solid rgba(210, 209, 209, 0.598);
     margin: 20px 20px;
     padding-bottom: 20px;
 
@@ -136,7 +136,7 @@ h3 {
   .page-main {
     margin: 20px;
     .page-description {
-      border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+      border-bottom: 1px solid rgba(210, 209, 209, 0.598);
       padding-bottom: 20px;
       margin-bottom: 20px;
       span {
@@ -150,7 +150,7 @@ h3 {
       }
       margin-bottom: 20px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+      border-bottom: 1px solid rgba(210, 209, 209, 0.598);
     }
     .page-reviews {
       .reviews-header {
@@ -162,6 +162,8 @@ h3 {
         div:nth-of-type(2) {
           h4 {
             text-decoration: underline;
+            margin-bottom: 10px;
+            cursor: pointer;
           }
         }
       }
@@ -175,6 +177,42 @@ h3 {
   margin: 10px;
 }
 
+.form {
+  width: 70%;
+  margin: 0 auto;
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-rating {
+    margin-top: 20px;
+  }
+
+  .loginToRegisterLink,
+  .registerToLoginLink {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #loginToRegisterLink,
+  #registerToLoginLink {
+    text-decoration: underline;
+    color: #1976d2;
+    // font-size: 0.8em;
+  }
+
+  .form-group-checkbox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+
+    label {
+      min-width: 200px;
+    }
+  }
+}
 //reuseable components settings
 .btn {
   padding: 10px 20px;
@@ -234,48 +272,12 @@ h3 {
   padding: 10px;
 }
 
-.form {
-  width: 70%;
-  margin: 0 auto;
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-rating {
-    border: 1px solid salmon;
-  }
-
-  .loginToRegisterLink,
-  .registerToLoginLink {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  #loginToRegisterLink,
-  #registerToLoginLink {
-    text-decoration: underline;
-    color: #1976d2;
-    // font-size: 0.8em;
-  }
-
-  .form-group-checkbox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    label {
-      min-width: 200px;
-    }
-  }
-}
-
 //specified components
 .card {
   // border: 1px solid red;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
-  background-color: #efefefa6;
+  background-color: #efefef7e;
   margin-bottom: 20px;
   padding: 20px;
 
@@ -311,8 +313,27 @@ h3 {
     justify-content: center;
     padding: 20px 20px;
   }
+
+  .review-card-heading {
+    span {
+      font-weight: 700;
+    }
+  }
 }
 
+.review-card-rating {
+  display: flex;
+  align-items: center;
+  //   flex-direction: row-reverse;
+  //   justify-content: flex-end;
+  .review-card-rating-stars {
+    margin-right: 5px;
+  }
+}
+
+.dish-reviews-cards {
+  margin: 15px;
+}
 // .dish-page {
 //   padding: 5px;
 //   .dish-header {

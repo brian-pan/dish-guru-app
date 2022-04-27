@@ -42,14 +42,15 @@ const themeBlack = createTheme({
       main: "#000",
     },
     secondary: {
-      main: "#001100",
+      main: "#000",
     },
   },
 });
 
 const customStyles = {
   content: {
-    width: "100%",
+    width: "80%",
+    height: "50%",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -133,7 +134,13 @@ function PublicDish() {
   return (
     <div className="page">
       <div className="page-backButton">
-        <Button component={Link} to="/dishes" variant="outlined">
+        <Button
+          component={Link}
+          to="/dishes"
+          variant="outlined"
+          theme={themeBlack}
+          size="large"
+        >
           <ArrowCircleLeftOutlinedIcon />
           Back
         </Button>
@@ -223,7 +230,6 @@ function PublicDish() {
                 <Rating
                   name="rating"
                   value={parseInt(rating)}
-                  precision={0.5}
                   onChange={onChange}
                 />
               </div>
@@ -261,7 +267,7 @@ function PublicDish() {
                 </Button>
               ) : (
                 <Button
-                  fullWidth
+                  variant="contained"
                   onClick={() => {
                     navigate("/login");
                   }}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { createDish, reset } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
@@ -16,6 +16,19 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+
+const themeBlack = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#000",
+    },
+  },
+});
 
 function NewDish() {
   //global state
@@ -73,13 +86,22 @@ function NewDish() {
   return (
     <div className="page">
       <div className="page-backButton">
-        <BackButton url="/" />
+        <Button
+          component={Link}
+          to="/"
+          variant="outlined"
+          theme={themeBlack}
+          size="large"
+        >
+          <ArrowCircleLeftOutlinedIcon />
+          Back
+        </Button>
       </div>
       <section className="page-heading">
         <h1>Add new dish</h1>
         <p>Please fill out the form below</p>
       </section>
-      <section className="page-main form">
+      <section className="form ">
         <div className="form-group">
           <TextField
             label="Username"
@@ -163,7 +185,7 @@ function NewDish() {
             />
           </div>
 
-          <div className="form-group form-group-checkbox">
+          <div className="form-group-checkbox">
             <FormGroup>
               <FormControlLabel
                 labelPlacement="start"
@@ -182,7 +204,7 @@ function NewDish() {
           </div>
           <div className="form-group">
             <Button type="submit" variant="contained" color="success" fullWidth>
-              Add
+              Add Dish
             </Button>
           </div>
         </form>
