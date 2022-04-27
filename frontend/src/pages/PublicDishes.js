@@ -20,7 +20,7 @@ const themeBlack = createTheme({
   },
 });
 
-function PublicDishes() {
+function PublicDishes({ average }) {
   const { dishes, isLoading, isSuccess } = useSelector((state) => state.dishes);
   const dispatch = useDispatch();
 
@@ -62,7 +62,7 @@ function PublicDishes() {
       <div className="page-main">
         <div className="cards">
           {dishes.map((dish) => (
-            <PublicDishItem key={dish._id} dish={dish} />
+            <PublicDishItem key={dish._id} dish={dish} average={average} />
           ))}
         </div>
       </div>

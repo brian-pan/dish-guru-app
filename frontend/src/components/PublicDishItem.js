@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaLeaf } from "react-icons/fa";
-import { Button, Chip } from "@mui/material";
+import { Button, Chip, Typography, Rating } from "@mui/material";
 
-function PublicDishItem({ dish }) {
+function PublicDishItem({ dish, average }) {
   return (
     <div className="card">
       <div className="dish-card-title">
@@ -13,6 +13,16 @@ function PublicDishItem({ dish }) {
           )}
         </div>
       </div>
+      {/* <div className="dish-card-rating">
+        <Rating
+          name="rating-display"
+          value={average}
+          precision={0.1}
+          size="small"
+          readOnly
+        />
+        <Typography component="legend">{dish.rating}/5</Typography>
+      </div> */}
       <div className="dish-card-author">
         By <span>{dish.author.name}</span>
       </div>
