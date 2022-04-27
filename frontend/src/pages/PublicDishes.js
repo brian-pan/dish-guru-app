@@ -28,13 +28,15 @@ function PublicDishes() {
   }
 
   return (
-    <div className="dish-page">
-      <div className="dish-buttons">
+    <div className="page">
+      <div className="page-backButton">
         <BackButton url="/" />
       </div>
-      <h1 className="page-title">Explore Dishes</h1>
-      <div className="dish-cards">
-        <div className="dish-body">
+      <div className="page-heading">
+        <h1>Explore Dishes</h1>
+      </div>
+      <div className="page-main">
+        <div className="cards">
           {dishes.map((dish) => (
             <PublicDishItem key={dish._id} dish={dish} />
           ))}

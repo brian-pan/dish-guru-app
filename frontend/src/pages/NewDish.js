@@ -71,13 +71,15 @@ function NewDish() {
   }
 
   return (
-    <div className="dish-page">
-      <BackButton url="/" />
-      <section className="heading">
+    <div className="page">
+      <div className="page-backButton">
+        <BackButton url="/" />
+      </div>
+      <section className="page-heading">
         <h1>Add new dish</h1>
         <p>Please fill out the form below</p>
       </section>
-      <section className="form">
+      <section className="page-main form">
         <div className="form-group">
           <TextField
             label="Username"

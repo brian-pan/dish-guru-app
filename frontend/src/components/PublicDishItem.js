@@ -3,7 +3,7 @@ import { FaLeaf } from "react-icons/fa";
 
 function PublicDishItem({ dish }) {
   return (
-    <div className="dish-card">
+    <div className="card">
       <div className="dish-card-title">
         <h4>{dish.name}</h4>
         <div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, useNavigate, Navigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
@@ -9,7 +9,43 @@ import { FaPlus } from "react-icons/fa";
 import ReviewItem from "../components/ReviewItem";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
-import { Button, TextField, Typography, Rating } from "@mui/material";
+import { FaLeaf } from "react-icons/fa";
+import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+import { Button, TextField, Typography, Rating, Chip } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+
+const themePeanut = createTheme({
+  palette: {
+    primary: {
+      main: "#a13800",
+    },
+    secondary: {
+      main: "#ffc107",
+    },
+  },
+});
+
+const themeChili = createTheme({
+  palette: {
+    primary: {
+      main: "#aa2e25",
+    },
+    secondary: {
+      main: "#f44336",
+    },
+  },
+});
+
+const themeBlack = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#001100",
+    },
+  },
+});
 
 const customStyles = {
   content: {
@@ -59,9 +95,9 @@ function PublicDish() {
   console.log("dish:", dish);
   const { text, rating } = reviewFormData;
 
-  // let average = Math.round(
-  //   reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
-  // );
+  let average = (
+    reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+  ).toFixed(1);
 
   const onChange = (e) => {
     setReviewFormData((prevState) => ({
@@ -95,121 +131,166 @@ function PublicDish() {
   console.log("Reviews:", reviews);
 
   return (
-    <div className="dish-page">
-      <header className="dish-header">
-        <BackButton url="/dishes" />
-        <h2>{dish.name}</h2>
-        <div>
-          <h3 className={`dish-diet dish-diet-${dish.diet}`}>{dish.diet}</h3>
+    <div className="page">
+      <div className="page-backButton">
+        <Button component={Link} to="/dishes" variant="outlined">
+          <ArrowCircleLeftOutlinedIcon />
+          Back
+        </Button>
+      </div>
+      <header className="page-heading">
+        <h1>{dish.name}</h1>
+        <div id="detailPageChip">
+          {dish.diet === "Normal" ? (
+            <Chip label="Regular Diet" variant="outlined" color="warning" />
+          ) : (
+            <Chip
+              icon={<FaLeaf />}
+              label={dish.diet}
+              variant="outlined"
+              color="success"
+            />
+          )}
         </div>
-        <div className="dish-ratings">
-          {/* avg review rating and total numbers */}
-          {/* {reviews.length !== 0 && (
-            <div className="dish-ratings-rating">
-              {isNaN(average) ? 0 : average}/5 Stars
-            </div>
-          )} */}
-          <div className="dish-ratings-number">{reviews.length} Reviews</div>
+        <div className="page-heading-ratings">
+          {reviews.length !== 0 && (
+            <>
+              <div className="page-heading-rating">
+                <Rating
+                  name="rating-display"
+                  value={average}
+                  precision={0.01}
+                  size="small"
+                  readOnly
+                />
+                <Typography component="legend">
+                  {isNaN(average) ? 0 : average}/5
+                </Typography>
+              </div>
+              <div className="page-ratings-number">
+                {reviews.length} Reviews
+              </div>
+            </>
+          )}
         </div>
-        {dish.author ? (
-          <p>
-            Author: <span>{dish.author.name}</span>
-          </p>
-        ) : null}
-        <p>Created On: {new Date(dish.createdAt).toLocaleString("en-US")}</p>
+        <div className="page-heading-author">
+          {dish.author ? (
+            <p>
+              Author: <span>{dish.author.name}</span>
+            </p>
+          ) : null}
+        </div>
+        <div className="page-heading-date">
+          <p>Created On: {new Date(dish.createdAt).toLocaleString("en-US")}</p>
+        </div>
       </header>
-      <hr />
-      <section className="dish-description">
-        <p>{dish.description}</p>
-      </section>
-      <hr />
-      <section className="dish-steps">
-        <h3>Cooking Instructions</h3>
-        <p>{dish.steps}</p>
-      </section>
-      <hr />
-      <section className="dish-reviews">
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          style={customStyles}
-          contentLabel="Add Review"
-        >
-          <div className="header">
-            <h2>Add Review</h2>
-            <button className="btn-close" onClick={() => setIsModalOpen(false)}>
-              X
-            </button>
-          </div>
-          <form onSubmit={onReviewSubmit} className="form">
-            <div className="form-group form-rating">
-              <Typography component="legend">
-                <h4>How would you rate the dish?</h4>
-              </Typography>
-              <Rating
-                name="rating"
-                value={parseInt(rating)}
-                onChange={onChange}
-              />
-            </div>
-            <div className="form-group">
-              <TextField
-                name="text"
-                label="Review"
-                id="text"
-                className="form-control"
-                placeholder="Review"
-                value={text}
-                onChange={onChange}
-                fullWidth
-              ></TextField>
-            </div>
-            <div className="form-group">
-              <Button type="submit" variant="outlined" fullWidth>
-                <span>Add</span>
-              </Button>
-            </div>
-          </form>
-        </Modal>
-
-        <div className="reviews-header">
-          <div>
-            {user ? (
-              <Button color="success" onClick={() => setIsModalOpen(true)}>
-                <FaPlus />
-                Add a review
-              </Button>
-            ) : (
-              <Button
-                fullWidth
-                onClick={() => {
-                  navigate("/login");
-                }}
+      {/* <hr /> */}
+      <main className="page-main">
+        <section className="page-description">
+          <p>
+            <span>"</span>
+            {dish.description}
+            <span>"</span>
+          </p>
+        </section>
+        {/* <hr /> */}
+        <section className="page-steps">
+          <h3>How to cook</h3>
+          <p>{dish.steps}</p>
+        </section>
+        {/* <hr /> */}
+        <section className="page-reviews">
+          <Modal
+            isOpen={isModalOpen}
+            onRequestClose={() => setIsModalOpen(false)}
+            style={customStyles}
+            contentLabel="Add Review"
+          >
+            <div className="header">
+              <h2>Add Review</h2>
+              <button
+                className="btn-close"
+                onClick={() => setIsModalOpen(false)}
               >
-                <FaPlus />
-                Login to add a review
-              </Button>
-            )}
-          </div>
-          <div>
-            <h4 onClick={() => setIsReviewShown(!isReviewShown)}>
-              {isReviewShown ? "Hide" : "View"} all reviews
-            </h4>
-          </div>
-        </div>
+                X
+              </button>
+            </div>
+            <form onSubmit={onReviewSubmit} className="form">
+              <div className="form-group form-rating">
+                <Typography component="legend">
+                  <h4>How would you rate the dish?</h4>
+                </Typography>
+                <Rating
+                  name="rating"
+                  value={parseInt(rating)}
+                  precision={0.5}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="form-group">
+                <TextField
+                  name="text"
+                  label="Review"
+                  id="text"
+                  className="form-control"
+                  placeholder="Review"
+                  value={text}
+                  onChange={onChange}
+                  fullWidth
+                ></TextField>
+              </div>
+              <div className="form-group">
+                <Button type="submit" variant="outlined" fullWidth>
+                  <span>Add</span>
+                </Button>
+              </div>
+            </form>
+          </Modal>
 
-        {isReviewShown ? (
-          <div className="dish-reviews-cards">
-            {reviews.map((review) => (
-              <ReviewItem
-                key={review._id}
-                review={review}
-                // username={user.name}
-              />
-            ))}
+          <div className="reviews-header">
+            <div>
+              <h3>Reviews ({reviews.length})</h3>
+              {user ? (
+                <Button
+                  color="success"
+                  variant="contained"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  <FaPlus />
+                  Add a review
+                </Button>
+              ) : (
+                <Button
+                  fullWidth
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  <FaPlus />
+                  Login to add a review
+                </Button>
+              )}
+            </div>
+            <div>
+              <h4 onClick={() => setIsReviewShown(!isReviewShown)}>
+                {isReviewShown ? "Hide" : "View"} all reviews
+              </h4>
+            </div>
           </div>
-        ) : null}
-      </section>
+
+          {isReviewShown ? (
+            <div className="dish-reviews-cards">
+              {reviews.map((review) => (
+                <ReviewItem
+                  key={review._id}
+                  review={review}
+                  // username={user.name}
+                />
+              ))}
+            </div>
+          ) : null}
+        </section>
+      </main>
     </div>
   );
 }

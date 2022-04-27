@@ -49,7 +49,130 @@ h3 {
   // padding: 0 20px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+  // margin-bottom: 30px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      margin-left: 10px;
+      a {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          color: #555;
+        }
+
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
 .page {
+  padding: 10px;
+
+  .page-backButton {
+  }
+
+  .page-heading {
+    // margin: 30px;
+    // font-size: 1.8em;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+    margin: 20px 20px;
+    padding-bottom: 20px;
+
+    // padding: 0 20px;
+    text-align: center;
+    p {
+      color: #828282;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5em;
+    }
+    .page-heading-ratings {
+      display: flex;
+      justify-content: space-between;
+      .page-heading-rating {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .page-heading-author,
+    .page-heading-date {
+      display: flex;
+      justify-content: flex-start;
+      font-weight: normal;
+      p {
+        color: #000;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .page-home-main {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .page-main {
+    margin: 20px;
+    .page-description {
+      border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      span {
+        font-size: large;
+        font-weight: 700;
+      }
+    }
+    .page-steps {
+      h3 {
+        margin-bottom: 5px;
+      }
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(210, 209, 209, 0.755);
+    }
+    .page-reviews {
+      .reviews-header {
+        div:first-of-type {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        div:nth-of-type(2) {
+          h4 {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+#detailPageChip {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
 }
 
 //reuseable components settings
@@ -111,76 +234,12 @@ h3 {
   padding: 10px;
 }
 
-.heading {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 30px;
-  padding: 0 20px;
-
-  p {
-    color: #828282;
-    text-align: center;
-  }
-
-  h1 {
-    text-align: center;
-  }
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-
-  border-bottom: 1px solid #e6e6e6;
-  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-
-  ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    li {
-      margin-left: 10px;
-      a {
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          color: #555;
-        }
-
-        svg {
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-}
-
 .form {
   width: 70%;
   margin: 0 auto;
 
   .form-group {
     margin-bottom: 15px;
-
-    // input,
-    // textarea,
-    // select {
-    //   width: 100%;
-    //   // padding: 10px;
-    //   // border: 1px solid #e6e6e6;
-    //   // border-radius: 0.5em;
-    // }
-
-    // label {
-    //   text-align: left;
-    //   display: block;
-    //   margin: 0 0 5px 3px;
-    // }
   }
 
   .form-rating {
@@ -212,21 +271,11 @@ h3 {
 }
 
 //specified components
-.dish-body {
-  padding: 5px;
-}
-
-.page-title {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.dish-card {
+.card {
   // border: 1px solid red;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
-  background-color: #efefef;
+  background-color: #efefefa6;
   margin-bottom: 20px;
   padding: 20px;
 
@@ -264,58 +313,58 @@ h3 {
   }
 }
 
-.dish-page {
-  padding: 5px;
-  .dish-header {
-    .dish-buttons {
-      display: flex;
-      justify-content: space-between;
-      button {
-      }
-    }
+// .dish-page {
+//   padding: 5px;
+//   .dish-header {
+//     .dish-buttons {
+//       display: flex;
+//       justify-content: space-between;
+//       button {
+//       }
+//     }
 
-    h2 {
-      text-align: center;
-    }
+//     h2 {
+//       text-align: center;
+//     }
 
-    div {
-      display: flex;
-      justify-content: flex-end;
+//     div {
+//       display: flex;
+//       justify-content: flex-end;
 
-      h3 {
-        margin-left: 10px;
-      }
-    }
+//       h3 {
+//         margin-left: 10px;
+//       }
+//     }
 
-    p {
-      span {
-        font-weight: 700;
-      }
-    }
+//     p {
+//       span {
+//         font-weight: 700;
+//       }
+//     }
 
-    .dish-ratings {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+//     .dish-ratings {
+//       display: flex;
+//       justify-content: space-between;
+//     }
+//   }
 
-  .dish-reviews {
-    h4 {
-      text-decoration: underline;
-      cursor: pointer;
+//   .dish-reviews {
+//     h4 {
+//       text-decoration: underline;
+//       cursor: pointer;
 
-      .reviews-header {
-        display: flex;
-      }
-    }
-  }
+//       .reviews-header {
+//         display: flex;
+//       }
+//     }
+//   }
 
-  .dish-description {
-  }
+//   .dish-description {
+//   }
 
-  .dish-steps {
-  }
-}
+//   .dish-steps {
+//   }
+// }
 
 //animations
 .loadingSpinnerContainer {
@@ -347,4 +396,14 @@ h3 {
   100% {
     transform: rotate(360deg);
   }
+}
+
+//phone
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+}
+//pad
+@media only screen and (min-width: 768px) and (max-width: 1280px) {
+}
+//laptop
+@media only screen and (min-width: 1280px) {
 }

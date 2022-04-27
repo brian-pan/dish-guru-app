@@ -6,18 +6,17 @@ function Home() {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <>
-      <section className="heading">
+    <div className="page">
+      <section className="page-heading">
         <h1>Welcome {user ? "back, " + user.name : " to DishGuru"}</h1>
         <p>Please choose an option from below</p>
       </section>
 
-      <div className="home-links">
+      <div className="page-home-main">
         <Link to="/dishes" className="btn btn-block">
           <FaGlobe />
           Explore Dishes
         </Link>
-
         <Link to="/my-dishes" className="btn btn-block">
           <FaList /> View my dishes
         </Link>
@@ -28,7 +27,7 @@ function Home() {
           <FaQuestionCircle /> Get random dish
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 
