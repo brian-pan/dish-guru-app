@@ -12,20 +12,52 @@ function Home() {
         <p>Please choose an option from below</p>
       </section>
 
-      <div className="page-home-main">
-        <Link to="/dishes" className="btn btn-block">
-          <FaGlobe />
-          Explore Dishes
-        </Link>
-        <Link to="/my-dishes" className="btn btn-block">
-          <FaList /> View my dishes
-        </Link>
-        <Link to="/new-dish" className="btn btn-block">
-          <FaCarrot /> Add a dish
-        </Link>
-        <Link to="/random" className="btn btn-block">
-          <FaQuestionCircle /> Get random dish
-        </Link>
+      <div className="page-home-mobile">
+        <div>
+          <Link to="/dishes">
+            <FaGlobe />
+            Explore Dishes
+          </Link>
+        </div>
+        <div>
+          <Link to="/my-dishes">
+            <FaList /> View my dishes
+          </Link>
+        </div>
+        <div>
+          <Link to="/new-dish">
+            <FaCarrot /> Add a dish
+          </Link>
+        </div>
+        <div>
+          <Link to="/random">
+            <FaQuestionCircle /> Get random dish
+          </Link>
+        </div>
+      </div>
+
+      <div className="page-home-pad">
+        <div>
+          <Link to="/dishes">
+            <FaGlobe />
+            Explore Dishes
+          </Link>
+        </div>
+        <div>
+          <Link to="/my-dishes">
+            <FaList /> View my dishes
+          </Link>
+        </div>
+        <div>
+          <Link to="/new-dish">
+            <FaCarrot /> Add a dish
+          </Link>
+        </div>
+        <div>
+          <Link to="/random">
+            <FaQuestionCircle /> Get random dish
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -59,6 +59,15 @@ h3 {
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
   // margin-bottom: 30px;
 
+  .logo {
+    span:nth-of-type(1) {
+      font-weight: 700;
+    }
+    span:nth-of-type(2) {
+      font-weight: 700;
+    }
+  }
+
   ul {
     display: flex;
     align-items: center;
@@ -84,6 +93,30 @@ h3 {
 
 .page {
   padding: 10px;
+
+  .page-home-mobile {
+    // border: 1px solid green;
+    margin: 30px 0;
+    div {
+      border: 1px solid #efefef7e;
+      box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      font-weight: 700;
+      background-color: #efefef7e;
+      &:hover {
+        transform: scale(0.98);
+        background-color: #efefef;
+        transition: all 0.1s;
+      }
+    }
+  }
+
+  .page-home-pad {
+    border: 1px solid red;
+  }
 
   .page-backButton {
   }
@@ -384,9 +417,28 @@ h3 {
 
 //phone
 @media only screen and (min-width: 320px) and (max-width: 768px) {
+  .page-home-pad {
+    display: none;
+  }
 }
 //pad
 @media only screen and (min-width: 768px) and (max-width: 1280px) {
+  .page-home-mobile {
+    display: none;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .card {
+    // position: absolute;
+    width: 50%;
+    .card-viewButton {
+      position: relative;
+    }
+  }
 }
 //laptop
 @media only screen and (min-width: 1280px) {

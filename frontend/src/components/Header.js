@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { reset as dishReset } from "../features/dishes/dishSlice";
-// import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
 
 function Header() {
   const navigate = useNavigate();
@@ -32,9 +32,14 @@ function Header() {
         {user ? (
           <>
             <li>
-              <button className="btn" onClick={onLogout}>
+              <Button
+                onClick={onLogout}
+                variant="outlined"
+                color="error"
+                size="small"
+              >
                 <FaSignOutAlt /> Logout
-              </button>
+              </Button>
             </li>
           </>
         ) : (

@@ -58,14 +58,14 @@ function MyDish() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(isSuccess);
+    // console.log(isSuccess);
     if (isError) {
       toast.error(message);
     }
 
     dispatch(getMyDish(dishId));
-    dispatch(resetLoadingState());
-    console.log("getMyDish", isSuccess);
+    // dispatch(resetLoadingState());
+    // console.log("getMyDish", isSuccess);
   }, [dispatch, message, dishId]);
 
   //enter edit mode

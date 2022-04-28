@@ -31,15 +31,17 @@ function MyDishItem({ dish }) {
           <span>"</span>
         </p>
       </div>
-      <Button
-        component={Link}
-        to={`/my-dishes/${dish._id}`}
-        variant="contained"
-        size="medium"
-        fullWidth
-      >
-        View Details
-      </Button>
+      <div className="card-viewButton">
+        <Button
+          component={Link}
+          to={`/my-dishes/${dish._id}`}
+          variant="contained"
+          size="medium"
+          fullWidth
+        >
+          View Details
+        </Button>
+      </div>
 
       {/* <Chip variant="outlined" color="success" size="small" icon={<FaLeaf />} /> */}
     </div>
