@@ -221,7 +221,7 @@ function MyDish() {
         </section>
       ) : (
         <div className="">
-          <header className="page-heading">
+          <header>
             <div className="page-buttons">
               <div className="page-backButton">
                 <Button
@@ -241,40 +241,44 @@ function MyDish() {
                 </Button>
               </div>
             </div>
-            <div>
+            <div className="page-heading">
               <h1>{dish.name}</h1>
-            </div>
 
-            <div id="privatePageChips">
-              <div>
-                {dish.isPublic ? (
-                  <Chip label="PUBLIC" variant="contained" color="secondary" />
-                ) : (
-                  <Chip label="PRIVATE" variant="contained" color="info" />
-                )}
+              <div id="privatePageChips">
+                <div>
+                  {dish.isPublic ? (
+                    <Chip
+                      label="PUBLIC"
+                      variant="contained"
+                      color="secondary"
+                    />
+                  ) : (
+                    <Chip label="PRIVATE" variant="contained" color="info" />
+                  )}
+                </div>
+                <div>
+                  {dish.diet === "Normal" ? (
+                    <Chip
+                      label="Regular Diet"
+                      variant="outlined"
+                      theme={themeBlack}
+                      color="primary"
+                    />
+                  ) : (
+                    <Chip
+                      icon={<FaLeaf />}
+                      label={dish.diet}
+                      variant="outlined"
+                      color="success"
+                    />
+                  )}
+                </div>
               </div>
-              <div>
-                {dish.diet === "Normal" ? (
-                  <Chip
-                    label="Regular Diet"
-                    variant="outlined"
-                    theme={themeBlack}
-                    color="primary"
-                  />
-                ) : (
-                  <Chip
-                    icon={<FaLeaf />}
-                    label={dish.diet}
-                    variant="outlined"
-                    color="success"
-                  />
-                )}
+              <div className="page-heading-date">
+                <p>
+                  Created On: {new Date(dish.createdAt).toLocaleString("en-US")}
+                </p>
               </div>
-            </div>
-            <div className="page-heading-date">
-              <p>
-                Created On: {new Date(dish.createdAt).toLocaleString("en-US")}
-              </p>
             </div>
           </header>
           <section className="page-main">

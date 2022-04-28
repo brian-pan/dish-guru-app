@@ -70,7 +70,7 @@ function Register() {
 
   return (
     <div className="page">
-      <section className="heading">
+      <section className="page-heading">
         <h1>
           <FaUser /> Register
         </h1>

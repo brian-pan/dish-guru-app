@@ -231,6 +231,7 @@ function PublicDish() {
                   name="rating"
                   value={parseInt(rating)}
                   onChange={onChange}
+                  size="large"
                 />
               </div>
               <div className="form-group">
@@ -246,8 +247,13 @@ function PublicDish() {
                 ></TextField>
               </div>
               <div className="form-group">
-                <Button type="submit" variant="outlined" fullWidth>
-                  <span>Add</span>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="success"
+                  fullWidth
+                >
+                  <span>Add Review</span>
                 </Button>
               </div>
             </form>

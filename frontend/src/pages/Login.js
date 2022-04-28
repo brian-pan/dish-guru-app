@@ -64,8 +64,8 @@ function Login() {
   }
 
   return (
-    <>
-      <section className="heading">
+    <div className="page">
+      <section className="page-heading">
         <h1>
           <FaSignInAlt /> Login
         </h1>
@@ -122,7 +122,7 @@ function Login() {
       </section>
 
       <footer className="copyright">&copy; Zifan Pan 2022</footer>
-    </>
+    </div>
   );
 }
 
