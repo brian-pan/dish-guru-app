@@ -99,6 +99,7 @@ h3 {
     margin: 30px 0;
     div {
       border: 1px solid #efefef7e;
+      border-radius: 10px;
       box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
       text-align: center;
       width: 80%;
@@ -115,7 +116,53 @@ h3 {
   }
 
   .page-home-pad {
-    border: 1px solid red;
+    // border: 1px solid green;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+      border: 1px solid #efefef7e;
+      border-radius: 10px;
+      box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: large;
+      width: 48%;
+      margin: 20px auto;
+      padding: 20px;
+      font-weight: 700;
+      background-color: #efefef7e;
+      padding: 100px 0;
+      &:hover {
+        transform: scale(0.98);
+        background-color: #efefef;
+        transition: all 0.1s;
+      }
+    }
+  }
+
+  .page-home-desktop {
+    // border: 1px solid green;
+    margin: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+      border: 1px solid #efefef7e;
+      border-radius: 10px;
+      box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: large;
+      width: 48%;
+      margin: 20px auto;
+      padding: 20px;
+      font-weight: 700;
+      background-color: #efefef7e;
+      padding: 100px 0;
+      &:hover {
+        transform: scale(0.98);
+        background-color: #efefef;
+        transition: all 0.1s;
+      }
+    }
   }
 
   .page-backButton {
@@ -268,7 +315,7 @@ h3 {
 .card {
   // border: 1px solid red;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
+  border-radius: 10px;
   background-color: #efefef7e;
   margin-bottom: 20px;
   padding: 20px;
@@ -330,58 +377,6 @@ h3 {
 .dish-reviews-cards {
   margin: 15px;
 }
-// .dish-page {
-//   padding: 5px;
-//   .dish-header {
-//     .dish-buttons {
-//       display: flex;
-//       justify-content: space-between;
-//       button {
-//       }
-//     }
-
-//     h2 {
-//       text-align: center;
-//     }
-
-//     div {
-//       display: flex;
-//       justify-content: flex-end;
-
-//       h3 {
-//         margin-left: 10px;
-//       }
-//     }
-
-//     p {
-//       span {
-//         font-weight: 700;
-//       }
-//     }
-
-//     .dish-ratings {
-//       display: flex;
-//       justify-content: space-between;
-//     }
-//   }
-
-//   .dish-reviews {
-//     h4 {
-//       text-decoration: underline;
-//       cursor: pointer;
-
-//       .reviews-header {
-//         display: flex;
-//       }
-//     }
-//   }
-
-//   .dish-description {
-//   }
-
-//   .dish-steps {
-//   }
-// }
 
 //animations
 .loadingSpinnerContainer {
@@ -417,16 +412,30 @@ h3 {
 
 //phone
 @media only screen and (min-width: 320px) and (max-width: 768px) {
-  .page-home-pad {
-    display: none;
+  .page {
+    .page-home-pad,
+    .page-home-desktop {
+      display: none;
+    }
   }
 }
 //pad
-@media only screen and (min-width: 768px) and (max-width: 1280px) {
-  .page-home-mobile {
-    display: none;
+@media only screen and (min-width: 769px) and (max-width: 1280px) {
+  .page {
+    .page-home-mobile,
+    .page-home-desktop {
+      display: none;
+    }
+    .dish-reviews-cards {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .review-card {
+      width: 80%;
+    }
   }
-
   .cards {
     display: flex;
     justify-content: space-between;
@@ -441,5 +450,42 @@ h3 {
   }
 }
 //laptop
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1281px) {
+  .page {
+    .page-home-pad,
+    .page-home-mobile {
+      display: none;
+    }
+    .page-home-desktop {
+      margin: 30px 150px;
+      div {
+        &:nth-child(1) {
+          // border: 1px solid red;
+        }
+        .page-home-link {
+          border: 1px solid green;
+        }
+      }
+    }
+    .page-heading {
+      font-size: large;
+    }
+    .review-card {
+      width: 70%;
+      margin: 20px auto;
+    }
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .card {
+    // position: absolute;
+    width: 33%;
+    .card-viewButton {
+      position: relative;
+    }
+  }
 }

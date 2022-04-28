@@ -14,7 +14,7 @@ function Home() {
 
       <div className="page-home-mobile">
         <div>
-          <Link to="/dishes">
+          <Link to="/dishes" className="page-home-link">
             <FaGlobe />
             Explore Dishes
           </Link>
@@ -37,6 +37,31 @@ function Home() {
       </div>
 
       <div className="page-home-pad">
+        <div>
+          <Link to="/dishes">
+            <FaGlobe />
+            Explore Dishes
+          </Link>
+          s
+        </div>
+        <div>
+          <Link to="/my-dishes">
+            <FaList /> View my dishes
+          </Link>
+        </div>
+        <div>
+          <Link to="/new-dish">
+            <FaCarrot /> Add a dish
+          </Link>
+        </div>
+        <div>
+          <Link to="/random">
+            <FaQuestionCircle /> Get random dish
+          </Link>
+        </div>
+      </div>
+
+      <div className="page-home-desktop">
         <div>
           <Link to="/dishes">
             <FaGlobe />
