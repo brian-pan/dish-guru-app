@@ -42,7 +42,6 @@ function Home() {
             <FaGlobe />
             Explore Dishes
           </Link>
-          s
         </div>
         <div>
           <Link to="/my-dishes">

@@ -202,7 +202,7 @@ function NewDish() {
               />
             </FormGroup>
           </div>
-          <div className="form-group">
+          <div className="form-group page-addButton">
             <Button type="submit" variant="contained" color="success" fullWidth>
               Add Dish
             </Button>

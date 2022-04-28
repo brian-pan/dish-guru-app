@@ -5,12 +5,19 @@ import { Button, Chip, Typography, Rating } from "@mui/material";
 function PublicDishItem({ dish, average }) {
   return (
     <div className="card">
-      <div className="dish-card-title">
-        <h4>{dish.name}</h4>
-        <div>
-          {dish.diet !== "Normal" && (
-            <Chip label={<FaLeaf />} variant="contained" color="success" />
-          )}
+      <div>
+        <div className="dish-card-title">
+          <h4>{dish.name}</h4>
+          <div>
+            {dish.diet !== "Normal" && (
+              <Chip label={<FaLeaf />} variant="contained" color="success" />
+            )}
+          </div>
+        </div>
+
+        <div className="dish-card-author">
+          <p>By </p>
+          <span>{dish.author.name}</span>
         </div>
       </div>
       {/* <div className="dish-card-rating">
@@ -23,9 +30,7 @@ function PublicDishItem({ dish, average }) {
         />
         <Typography component="legend">{dish.rating}/5</Typography>
       </div> */}
-      <div className="dish-card-author">
-        By <span>{dish.author.name}</span>
-      </div>
+
       <div className="dish-card-description">
         <p>
           <span>"</span>

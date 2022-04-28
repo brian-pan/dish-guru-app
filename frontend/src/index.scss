@@ -319,6 +319,9 @@ h3 {
   background-color: #efefef7e;
   margin-bottom: 20px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .dish-card-title {
     display: flex;
@@ -348,7 +351,9 @@ h3 {
     font-size: 0.9em;
     span {
       font-weight: 700;
+      margin-left: 4px;
     }
+    display: flex;
   }
 
   .dish-card-description {
@@ -466,6 +471,10 @@ h3 {
           border: 1px solid green;
         }
       }
+    }
+    .page-addButton {
+      width: 60%;
+      margin: 0 auto;
     }
     .page-heading {
       font-size: large;
