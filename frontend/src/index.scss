@@ -147,7 +147,7 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     div {
-      border: 1px solid #efefef7e;
+      border: 1px solid #fff;
       border-radius: 10px;
       box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -156,11 +156,11 @@ h3 {
       margin: 20px auto;
       padding: 20px;
       font-weight: 700;
-      background-color: #efefef7e;
+      background-color: #fff;
       padding: 100px 0;
       &:hover {
         transform: scale(0.98);
-        background-color: #efefef;
+        background-color: #fff;
         transition: all 0.1s;
       }
     }
@@ -362,6 +362,10 @@ h3 {
     justify-content: center;
     padding: 20px 20px;
   }
+
+  // .review-card {
+  //   background-color: #fff;
+  // }
 
   .review-card-heading {
     span {

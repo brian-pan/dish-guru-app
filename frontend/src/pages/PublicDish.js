@@ -82,7 +82,7 @@ function PublicDish() {
     // message: reviewMessage,
   } = useSelector((state) => state.reviews);
 
-  const [isReviewShown, setIsReviewShown] = useState(false);
+  const [isReviewShown, setIsReviewShown] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [reviewFormData, setReviewFormData] = useState({
     text: "",
@@ -203,7 +203,30 @@ function PublicDish() {
         {/* <hr /> */}
         <section className="page-steps">
           <h3>How to cook</h3>
-          <p>{dish.steps}</p>
+          {dish.stepOne && (
+            <>
+              <h4>Step 1:</h4>
+              <p>{dish.stepOne}</p>
+            </>
+          )}
+          {dish.stepTwo && (
+            <>
+              <h4>Step 2:</h4>
+              <p>{dish.stepTwo}</p>
+            </>
+          )}
+          {dish.stepThree && (
+            <>
+              <h4>Step 3:</h4>
+              <p>{dish.stepThree}</p>
+            </>
+          )}
+          {dish.stepFour && (
+            <>
+              <h4>Step 4:</h4>
+              <p>{dish.stepFour}</p>
+            </>
+          )}
         </section>
         {/* <hr /> */}
         <section className="page-reviews">
