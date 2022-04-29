@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPublicDishes, reset } from "../features/dishes/dishSlice";
 import Spinner from "../components/Spinner";
-import BackButton from "../components/BackButton";
 import PublicDishItem from "../components/PublicDishItem";
 import { Button, Chip } from "@mui/material";
 import { createTheme } from "@mui/material/styles";

@@ -10,6 +10,7 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-color: #efefefca;
 }
 
 a {
@@ -98,7 +99,7 @@ h3 {
     // border: 1px solid green;
     margin: 30px 0;
     div {
-      border: 1px solid #efefef7e;
+      border: 1px solid #fff;
       border-radius: 10px;
       box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
       text-align: center;
@@ -106,7 +107,7 @@ h3 {
       margin: 20px auto;
       padding: 20px;
       font-weight: 700;
-      background-color: #efefef7e;
+      background-color: #fff;
       &:hover {
         transform: scale(0.98);
         background-color: #efefef;
@@ -316,7 +317,7 @@ h3 {
   // border: 1px solid red;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  background-color: #efefef7e;
+  background-color: #fff;
   margin-bottom: 20px;
   padding: 20px;
   display: flex;

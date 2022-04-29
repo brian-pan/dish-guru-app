@@ -49,7 +49,16 @@ function MyDish() {
   const [isEditing, setIsEditing] = useState(false);
   const [editItem, setEditItem] = useState({});
 
-  const { name, diet, description, steps, isPublic } = editItem;
+  const {
+    name,
+    diet,
+    description,
+    stepOne,
+    stepTwo,
+    stepThree,
+    stepFour,
+    isPublic,
+  } = editItem;
 
   //initialize
   const params = useParams();
@@ -162,13 +171,59 @@ function MyDish() {
             <div className="form-group">
               <TextField
                 className="form-control"
-                label="Cooking Instruction"
+                label="Cooking Instruction - step 1"
                 variant="outlined"
-                name="steps"
-                id="steps"
+                name="stepOne"
+                id="stepOne"
                 placeholder="Step 1..."
                 type="text"
-                value={steps}
+                value={stepOne}
+                onChange={onChange}
+                size="large"
+                fullWidth
+              />
+            </div>
+
+            <div className="form-group">
+              <TextField
+                className="form-control"
+                label="Step 2 (optional)"
+                variant="outlined"
+                name="stepTwo"
+                id="stepTwo"
+                placeholder="Step 2..."
+                type="text"
+                value={stepTwo}
+                onChange={onChange}
+                size="large"
+                fullWidth
+              />
+            </div>
+            <div className="form-group">
+              <TextField
+                className="form-control"
+                label="Step 3 (optional)"
+                variant="outlined"
+                name="stepThree"
+                id="stepThree"
+                placeholder="Step 3..."
+                type="text"
+                value={stepThree}
+                onChange={onChange}
+                size="large"
+                fullWidth
+              />
+            </div>
+            <div className="form-group">
+              <TextField
+                className="form-control"
+                label="Step 4 (optional)"
+                variant="outlined"
+                name="stepFour"
+                id="stepFour"
+                placeholder="Step 4..."
+                type="text"
+                value={stepFour}
                 onChange={onChange}
                 size="large"
                 fullWidth
@@ -288,8 +343,15 @@ function MyDish() {
               <span>"</span>
             </div>
             <div className="dish-steps">
-              <h3>Cooking Instructions:</h3>
-              {dish.steps}
+              <h3>Cooking Instructions</h3>
+              <h4>Step 1:</h4>
+              {dish.stepOne}
+              {dish.stepTwo && <h4>Step 2:</h4>}
+              {dish.stepTwo}
+              {dish.stepThree && <h4>Step 3:</h4>}
+              {dish.stepThree}
+              {dish.stepFour && <h4>Step 4:</h4>}
+              {dish.stepFour}
             </div>
           </section>
           <section className="page-deleteButton">

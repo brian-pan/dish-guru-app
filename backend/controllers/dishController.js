@@ -81,8 +81,17 @@ const getPublicDish = asyncHandler(async (req, res) => {
 // @route   POST /api/my-dishes
 // @access  Private
 const createDish = asyncHandler(async (req, res) => {
-  const { name, steps, description, diet, isPublic } = req.body;
-  if (!name || !steps) {
+  const {
+    name,
+    stepOne,
+    stepTwo,
+    stepThree,
+    stepFour,
+    description,
+    diet,
+    isPublic,
+  } = req.body;
+  if (!name || !stepOne) {
     res.status(400);
     throw new Error("Please add name and steps");
   }
@@ -96,7 +105,10 @@ const createDish = asyncHandler(async (req, res) => {
 
   const dish = await Dish.create({
     name,
-    steps,
+    stepOne,
+    stepTwo,
+    stepThree,
+    stepFour,
     description,
     diet,
     isPublic,

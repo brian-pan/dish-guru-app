@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   // res.send("Hello World");
-  res.status(200).json({ message: "Welcome to the Support Desk API" });
+  res.status(200).json({ message: "Welcome to the Dish Guru API" });
 });
 
 //Routes

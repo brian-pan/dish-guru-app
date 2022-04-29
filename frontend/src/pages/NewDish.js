@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { createDish, reset } from "../features/dishes/dishSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import BackButton from "../components/BackButton";
 import {
   Button,
   TextField,
@@ -42,10 +41,22 @@ function NewDish() {
     name: "",
     diet: "Normal",
     description: "",
-    steps: "",
+    stepOne: "",
+    stepTwo: "",
+    stepThree: "",
+    stepFour: "",
     isPublic: false,
   });
-  const { name, diet, description, steps, isPublic } = formData;
+  const {
+    name,
+    diet,
+    description,
+    stepOne,
+    stepTwo,
+    stepThree,
+    stepFour,
+    isPublic,
+  } = formData;
 
   //initialize
   const dispatch = useDispatch();
@@ -156,13 +167,62 @@ function NewDish() {
           <div className="form-group">
             <TextField
               className="form-control"
-              label="Cooking Instruction"
+              label="Cooking Instruction - Step 1"
               variant="outlined"
-              name="steps"
-              id="steps"
+              name="stepOne"
+              id="stepOne"
               placeholder="Step 1..."
               type="text"
-              value={steps}
+              value={stepOne}
+              onChange={onChange}
+              size="small"
+              fullWidth
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <TextField
+              className="form-control"
+              label="Step 2 (optional)"
+              variant="outlined"
+              name="stepTwo"
+              id="stepTwo"
+              placeholder="Step 2..."
+              type="text"
+              value={stepTwo}
+              onChange={onChange}
+              size="small"
+              fullWidth
+            />
+          </div>
+
+          <div className="form-group">
+            <TextField
+              className="form-control"
+              label="Step 3 (optional)"
+              variant="outlined"
+              name="stepThree"
+              id="stepThree"
+              placeholder="Step 3..."
+              type="text"
+              value={stepThree}
+              onChange={onChange}
+              size="small"
+              fullWidth
+            />
+          </div>
+
+          <div className="form-group">
+            <TextField
+              className="form-control"
+              label="Step 4 (optional)"
+              variant="outlined"
+              name="stepFour"
+              id="stepFour"
+              placeholder="Step 4..."
+              type="text"
+              value={stepFour}
               onChange={onChange}
               size="small"
               fullWidth

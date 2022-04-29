@@ -28,9 +28,18 @@ const dishSchema = Schema(
     description: {
       type: String,
     },
-    steps: {
+    stepOne: {
       type: String,
-      required: [true, "Please add some cooking instructions"],
+      required: [true, "Please add at least one cooking instruction"],
+    },
+    stepTwo: {
+      type: String,
+    },
+    stepThree: {
+      type: String,
+    },
+    stepFour: {
+      type: String,
     },
     isPublic: {
       type: Boolean,
