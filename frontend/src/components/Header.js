@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { reset as dishReset } from "../features/dishes/dishSlice";
-import { Button, AppBar, Toolbar, Typography } from "@mui/material";
-
+import { Button, AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,21 +21,6 @@ function Header() {
 
   return (
     <header className="header">
-      {/* <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" color="inherit" component="div">
-            Photos
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <div className="logo">
         <Link to="/" onClick={onClick}>
           <span id="logo-spices">Dish</span>

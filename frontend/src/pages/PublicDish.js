@@ -13,6 +13,7 @@ import { FaLeaf } from "react-icons/fa";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
 import { Button, TextField, Typography, Rating, Chip } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+import CloseIcon from "@mui/icons-material/Close";
 
 const themePeanut = createTheme({
   palette: {
@@ -58,6 +59,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     position: "relative",
+    boxShadow: "0px 2.98256px 7.4564px rgba(0, 0, 0, 0.4)",
   },
 };
 
@@ -139,7 +141,7 @@ function PublicDish() {
           to="/dishes"
           variant="outlined"
           theme={themeBlack}
-          size="large"
+          size="small"
         >
           <ArrowCircleLeftOutlinedIcon />
           Back
@@ -236,13 +238,13 @@ function PublicDish() {
             style={customStyles}
             contentLabel="Add Review"
           >
-            <div className="header">
+            <div className="modal-heading">
               <h2>Add Review</h2>
               <button
                 className="btn-close"
                 onClick={() => setIsModalOpen(false)}
               >
-                X
+                <CloseIcon />
               </button>
             </div>
             <form onSubmit={onReviewSubmit} className="form">
@@ -267,6 +269,8 @@ function PublicDish() {
                   value={text}
                   onChange={onChange}
                   fullWidth
+                  multiline
+                  rows={5}
                 ></TextField>
               </div>
               <div className="form-group">

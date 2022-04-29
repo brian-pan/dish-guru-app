@@ -275,7 +275,7 @@ function MyDish() {
           </form>
         </section>
       ) : (
-        <div className="">
+        <div className="layout">
           <header>
             <div className="page-buttons">
               <div className="page-backButton">
@@ -342,16 +342,16 @@ function MyDish() {
               {dish.description}
               <span>"</span>
             </div>
-            <div className="dish-steps">
+            <div className="page-steps">
               <h3>Cooking Instructions</h3>
               <h4>Step 1:</h4>
-              {dish.stepOne}
+              <p>{dish.stepOne}</p>
               {dish.stepTwo && <h4>Step 2:</h4>}
-              {dish.stepTwo}
+              <p>{dish.stepTwo}</p>
               {dish.stepThree && <h4>Step 3:</h4>}
-              {dish.stepThree}
+              <p>{dish.stepThree}</p>
               {dish.stepFour && <h4>Step 4:</h4>}
-              {dish.stepFour}
+              <p>{dish.stepFour}</p>
             </div>
           </section>
           <section className="page-deleteButton">
