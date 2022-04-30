@@ -139,9 +139,9 @@ function PublicDish() {
         <Button
           component={Link}
           to="/dishes"
-          variant="outlined"
+          className="backButton"
           theme={themeBlack}
-          size="small"
+          size="large"
         >
           <ArrowCircleLeftOutlinedIcon />
           Back

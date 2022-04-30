@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer>
+    <footer className="copyright">
       <p>&copy; Zifan Pan 2022</p>
     </footer>
   );

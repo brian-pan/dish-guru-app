@@ -47,7 +47,7 @@ function PublicDishes({ average }) {
         <Button
           component={Link}
           to="/"
-          variant="outlined"
+          className="backButton"
           theme={themeBlack}
           size="large"
         >

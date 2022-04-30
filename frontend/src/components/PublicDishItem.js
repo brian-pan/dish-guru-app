@@ -10,7 +10,12 @@ function PublicDishItem({ dish, average }) {
           <h4>{dish.name}</h4>
           <div>
             {dish.diet !== "Normal" && (
-              <Chip label={<FaLeaf />} variant="contained" color="success" />
+              <Chip
+                label={<FaLeaf />}
+                variant="outlined"
+                color="success"
+                className="dish-card-title-chip"
+              />
             )}
           </div>
         </div>
@@ -42,6 +47,7 @@ function PublicDishItem({ dish, average }) {
         component={Link}
         to={`/dishes/${dish._id}`}
         variant="contained"
+        color="success"
         size="medium"
         fullWidth
       >

@@ -120,8 +120,6 @@ function Login() {
           </div>
         </form>
       </section>
-
-      <footer className="copyright">&copy; Zifan Pan 2022</footer>
     </div>
   );
 }

@@ -280,9 +280,9 @@ function MyDish() {
             <div className="page-buttons">
               <div className="page-backButton">
                 <Button
+                  className="backButton"
                   component={Link}
                   to="/my-dishes"
-                  variant="outlined"
                   theme={themeBlack}
                   size="large"
                 >

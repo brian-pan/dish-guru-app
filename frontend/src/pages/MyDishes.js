@@ -44,9 +44,9 @@ function MyDishes() {
     <div className="page">
       <div className="page-backButton">
         <Button
+          className="backButton"
           component={Link}
           to="/"
-          variant="outlined"
           theme={themeBlack}
           size="large"
         >
