@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 $text-color1: white;
-$bg-color-primary: green;
-$bg-color-primary-dark: rgb(2, 92, 2);
+$bg-color-primary: #2e7d32;
+$bg-color-primary-dark: #1b5e20;
 $bg-color-secondary: white;
 $max-width: 1280px;
 
@@ -49,6 +49,7 @@ h3 {
   display: flex;
   justify-content: center;
   margin-top: 3em;
+  padding-bottom: 10px;
 }
 
 .container {
@@ -106,10 +107,12 @@ h3 {
 }
 
 .page {
+  padding-top: 10px;
+  width: 90%;
+  margin: 0 auto;
   .page-heading {
-    padding-top: 10px;
     font-weight: 700;
-    margin: 20px 20px;
+    margin: 10px 20px;
     text-align: center;
     p {
       color: #828282;
@@ -208,8 +211,12 @@ h3 {
       .reviews-header {
         div:first-of-type {
           display: flex;
+          flex-direction: column-reverse;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
+          h3 {
+            margin: 10px 0;
+          }
         }
         div:nth-of-type(2) {
           h4 {
@@ -236,7 +243,6 @@ h3 {
       .page-home-card {
         margin: 20px 0;
         width: 48%;
-        // padding: 50px 0;
         min-height: 300px;
         display: flex;
         flex-direction: column;
@@ -249,8 +255,19 @@ h3 {
         }
       }
     }
+    .page-main {
+      .page-reviews {
+        .reviews-header {
+          div:first-of-type {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+      }
+    }
   }
-
   @media only screen and (min-width: 1280px) {
     .page-heading {
       h1 {
@@ -267,19 +284,41 @@ h3 {
     }
   }
 }
+.dish-cards {
+  .dish-card {
+    padding: 20px;
+    margin: 20px 0;
 
-.dish-card {
-  padding: 20px;
-  margin: 20px 0;
-  .dish-card-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .dish-card-title-chip {
-      svg {
-        width: 16px;
-        height: 16px;
+    .dish-card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .dish-card-title-chip {
+        svg {
+          width: 16px;
+          height: 16px;
+        }
       }
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .dish-card {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  @media only screen and (min-width: 1280px) {
+    .dish-card {
+      width: 30%;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }
@@ -287,13 +326,18 @@ h3 {
 #detailPageChip {
   display: flex;
   justify-content: flex-end;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 #privatePageChips {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.review-card {
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-heading {
@@ -337,7 +381,7 @@ h3 {
   #loginToRegisterLink,
   #registerToLoginLink {
     text-decoration: underline;
-    color: #1976d2;
+    color: $bg-color-primary;
     // font-size: 0.8em;
   }
 

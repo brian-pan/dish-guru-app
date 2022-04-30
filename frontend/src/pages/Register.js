@@ -144,7 +144,7 @@ function Register() {
             />
           </div>
           <div className="form-group">
-            <Button variant="contained" type="submit" fullWidth>
+            <Button variant="contained" type="submit" color="success" fullWidth>
               Register
             </Button>
           </div>
@@ -155,8 +155,6 @@ function Register() {
           </div>
         </form>
       </section>
-
-      <footer className="copyright">&copy; Zifan Pan 2022</footer>
     </div>
   );
 }

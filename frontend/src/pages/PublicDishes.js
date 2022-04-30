@@ -59,7 +59,7 @@ function PublicDishes({ average }) {
         <h1>Explore Dishes</h1>
       </div>
       <div className="page-main">
-        <div className="cards">
+        <div className="dish-cards">
           {dishes.map((dish) => (
             <PublicDishItem key={dish._id} dish={dish} average={average} />
           ))}

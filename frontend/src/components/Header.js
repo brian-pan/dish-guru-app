@@ -16,7 +16,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    // navigate("/");
   };
 
   return (
@@ -31,25 +31,20 @@ function Header() {
         {user ? (
           <>
             <li>
-              <Button
-                onClick={onLogout}
-                variant="outlined"
-                color="error"
-                size="small"
-              >
+              <Link to="/" onClick={onLogout} className="navbar-link">
                 <FaSignOutAlt /> Logout
-              </Button>
+              </Link>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link to="/login">
+              <Link to="/login" className="navbar-link">
                 <FaSignInAlt /> Login
               </Link>
             </li>
             <li>
-              <Link to="/register">
+              <Link to="/register" className="navbar-link">
                 <FaUser /> Register
               </Link>
             </li>

@@ -158,6 +158,7 @@ function PublicDish() {
               label={dish.diet}
               variant="outlined"
               color="success"
+              className="vegetarianChip"
             />
           )}
         </div>
@@ -301,6 +302,7 @@ function PublicDish() {
               ) : (
                 <Button
                   variant="contained"
+                  color="success"
                   onClick={() => {
                     navigate("/login");
                   }}
