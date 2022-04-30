@@ -9,79 +9,25 @@ function Home() {
     <div className="page">
       <section className="page-heading">
         <h1>Welcome {user ? "back, " + user.name : " to DishGuru"}</h1>
-        <p>Please choose an option from below</p>
       </section>
 
-      <div className="page-home-mobile">
-        <div>
-          <Link to="/dishes" className="page-home-link">
-            <FaGlobe />
-            Explore Dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/my-dishes">
-            <FaList /> View my dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/new-dish">
-            <FaCarrot /> Add a dish
-          </Link>
-        </div>
-        <div>
-          <Link to="/random">
-            <FaQuestionCircle /> Get random dish
-          </Link>
-        </div>
-      </div>
+      <div className="page-home-cards">
+        <Link to="/dishes" className="card page-home-card">
+          <FaGlobe />
+          <span>Explore Dishes</span>
+        </Link>
 
-      <div className="page-home-pad">
-        <div>
-          <Link to="/dishes">
-            <FaGlobe />
-            Explore Dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/my-dishes">
-            <FaList /> View my dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/new-dish">
-            <FaCarrot /> Add a dish
-          </Link>
-        </div>
-        <div>
-          <Link to="/random">
-            <FaQuestionCircle /> Get random dish
-          </Link>
-        </div>
-      </div>
+        <Link to="/my-dishes" className="card page-home-card">
+          <FaList /> <span>View my dishes</span>
+        </Link>
 
-      <div className="page-home-desktop">
-        <div>
-          <Link to="/dishes">
-            <FaGlobe />
-            Explore Dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/my-dishes">
-            <FaList /> View my dishes
-          </Link>
-        </div>
-        <div>
-          <Link to="/new-dish">
-            <FaCarrot /> Add a dish
-          </Link>
-        </div>
-        <div>
-          <Link to="/random">
-            <FaQuestionCircle /> Get random dish
-          </Link>
-        </div>
+        <Link to="/new-dish" className="card page-home-card">
+          <FaCarrot /> <span>Add a dish</span>
+        </Link>
+
+        <Link to="/random" className="card page-home-card">
+          <FaQuestionCircle /> <span>Get random dish</span>
+        </Link>
       </div>
     </div>
   );

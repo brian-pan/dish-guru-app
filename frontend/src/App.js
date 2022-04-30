@@ -15,6 +15,7 @@ import MyDishes from "./pages/MyDishes";
 import MyDish from "./pages/MyDish";
 import NewDish from "./pages/NewDish";
 import RandomDish from "./pages/RandomDish";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path="/random" element={<RandomDish />} />
             </Route>
           </Routes>
+          <Footer />
         </div>
       </Router>
       <ToastContainer />

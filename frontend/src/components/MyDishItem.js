@@ -6,7 +6,7 @@ import { Chip, Button } from "@mui/material";
 
 function MyDishItem({ dish }) {
   return (
-    <div className="card">
+    <div className="card dish-card">
       <div className="dish-card-title">
         <h4>{dish.name}</h4>
       </div>
@@ -31,7 +31,7 @@ function MyDishItem({ dish }) {
           <span>"</span>
         </p>
       </div>
-      <div className="card-viewButton">
+      <div className="dish-card-viewButton">
         <Button
           component={Link}
           to={`/my-dishes/${dish._id}`}

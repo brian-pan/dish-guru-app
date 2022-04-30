@@ -2,7 +2,7 @@ import { Rating, Typography } from "@mui/material";
 
 function ReviewItem({ review }) {
   return (
-    <div className="card review-card" review-card-heading>
+    <div className="card review-card">
       <div className="review-card-heading">
         By <span>{review.author.name}</span>
       </div>

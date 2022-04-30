@@ -59,13 +59,11 @@ function MyDishes() {
         <div className="page-heading">
           <h1>My Dishes</h1>
         </div>
+        {dishes.length ? null : <h3> You don't have any recipe yet...</h3>}
         <div className="dish-cards">
-          {dishes.length ? null : <h3> You don't have any recipe yet...</h3>}
-          <div className="cards">
-            {dishes.map((dish) => (
-              <MyDishItem key={dish._id} dish={dish} />
-            ))}
-          </div>
+          {dishes.map((dish) => (
+            <MyDishItem key={dish._id} dish={dish} />
+          ))}
         </div>
       </main>
     </div>

@@ -4,7 +4,7 @@ import { Button, Chip, Typography, Rating } from "@mui/material";
 
 function PublicDishItem({ dish, average }) {
   return (
-    <div className="card">
+    <div className="card dish-card">
       <div>
         <div className="dish-card-title">
           <h4>{dish.name}</h4>
