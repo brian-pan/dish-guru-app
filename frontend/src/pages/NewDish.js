@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { createDish, reset } from "../features/dishes/dishSlice";
@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";
+// import ImageUploading from "react-images-uploading";
 
 const themeBlack = createTheme({
   palette: {
@@ -30,6 +31,8 @@ const themeBlack = createTheme({
 });
 
 function NewDish() {
+  // const [images, setImages] = React.useState([]);
+
   //global state
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
@@ -40,13 +43,14 @@ function NewDish() {
   const [formData, setFormData] = useState({
     name: "",
     diet: "Normal",
-    description: "",
     stepOne: "",
     stepTwo: "",
     stepThree: "",
     stepFour: "",
+    description: "",
     isPublic: false,
   });
+
   const {
     name,
     diet,
@@ -82,8 +86,11 @@ function NewDish() {
     setFormData((prevState) => ({
       ...prevState,
       [name]: type === "checkbox" ? checked : value,
+      // images: imageUrl,
     }));
   };
+
+  console.log(formData);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -93,6 +100,12 @@ function NewDish() {
   if (isLoading) {
     return <Spinner />;
   }
+
+  // const onImageUpload = (imageList, addUpdateIndex) => {
+  //   // data for submit
+  //   console.log(imageList, addUpdateIndex);
+  //   setImages(imageList);
+  // };
 
   return (
     <div className="page">
@@ -129,7 +142,7 @@ function NewDish() {
             disabled
           />
         </div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} encType="multipart/form-data">
           <div className="form-group">
             <TextField
               label="Dish Name"
@@ -163,6 +176,51 @@ function NewDish() {
               </Select>
             </FormControl>
           </div>
+
+          {/* <div className="form-group">
+            <ImageUploading
+              multiple
+              value={images}
+              onChange={onImageUpload}
+              maxNumber={3}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps,
+              }) => (
+                // write your building UI
+                <div className="upload__image-wrapper">
+                  <button
+                    style={isDragging ? { color: "red" } : null}
+                    {...dragProps}
+                  >
+                    Click or Drop here
+                  </button>
+                  &nbsp;
+                  <button onClick={onImageRemoveAll}>Remove all images</button>
+                  {imageList.map((image, index) => (
+                    <div key={index} className="image-item">
+                      <img src={image.data_url} alt="" width="100" />
+                      <div className="image-item__btn-wrapper">
+                        <button onClick={() => onImageUpdate(index)}>
+                          Update
+                        </button>
+                        <button onClick={() => onImageRemove(index)}>
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </ImageUploading>
+          </div> */}
 
           <div className="form-group">
             <TextField
