@@ -59,6 +59,15 @@ function Login() {
     dispatch(login(userData));
   };
 
+  const onSampleClick = () => {
+    setFormData({
+      name: "sample",
+      email: "sample@gmail.com",
+      password: "sample",
+      password2: "sample",
+    });
+  };
+
   if (isLoading) {
     return <Spinner />;
   }
@@ -117,6 +126,16 @@ function Login() {
             <Link to="/register" id="loginToRegisterLink">
               Don't have an account? Register
             </Link>
+          </div>
+          <div className="sample">
+            <p className="sample-text">To whom viewing this project:</p>
+            <p className="sample-text">
+              You can use this sample account below to login for simplicity,
+              thank you.
+            </p>
+            <p className="sample-link" onClick={onSampleClick}>
+              Use Sample Account
+            </p>
           </div>
         </form>
       </section>

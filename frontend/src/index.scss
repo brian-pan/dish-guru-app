@@ -385,6 +385,20 @@ h3 {
     // font-size: 0.8em;
   }
 
+  .sample {
+    // border: 1px solid red;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+    .sample-link {
+      cursor: pointer;
+      text-decoration: underline;
+      color: $bg-color-primary;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+  }
+
   .form-group-checkbox {
     display: flex;
     justify-content: space-around;
