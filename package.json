@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Brian",
+  "author": "Brian Pan",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
